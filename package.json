@@ -1,0 +1,35 @@
+{
+  "name": "www.coox.org",
+  "version": "0.1.0",
+  "description": "Personal Website",
+  "scripts": {
+    "check-format": "prettier --check .",
+    "format": "prettier --write .",
+    "lint": "eslint --cache .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fasterdisco/www.coox.org.git"
+  },
+  "keywords": [
+    "developer",
+    "eric",
+    "fullstack",
+    "freelance",
+    "redon"
+  ],
+  "author": "Eric Redon <eric.redon@coox.org> (https://coox.org/)",
+  "license": "MIT",
+  "homepage": "https://www.coox.org/",
+  "devDependencies": {
+    "eslint": "7.0.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "prettier": "2.0.5"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+# In addition to any patterns in a `.eslintignore` file,
+# ESLint ignores files in `/**/node_modules/*` by default.
+# https://eslint.org/docs/user-guide/configuring#eslintignore
+
+build/
