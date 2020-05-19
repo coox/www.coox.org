@@ -23,13 +23,34 @@ body {
   width: 100%;
 
   .coox-hero-title {
+    z-index: 1;
     color: #ccc;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 20vw;
+    line-height: 30vw;
+    margin: 0;
+    padding-bottom: 2vw;
 
     @media (prefers-color-scheme: light) {
       color: #333;
     }
+  }
+}
+
+.coox-wave-strip-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+
+  .coox-wave-strip {
+    border-bottom: 1vw solid #999;
+    border-top: 1vw solid #999;
+    height: 100%;
+    transition: height 1s ease-out;
+    width: 100%;
   }
 }
