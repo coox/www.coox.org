@@ -1,0 +1,35 @@
+html,
+body {
+  background-color: #333;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #ccc;
+  }
+}
+
+.coox-hero {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  .coox-hero-title {
+    color: #ccc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 20vw;
+
+    @media (prefers-color-scheme: light) {
+      color: #333;
+    }
+  }
+}
