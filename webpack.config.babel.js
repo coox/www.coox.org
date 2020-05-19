@@ -8,6 +8,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 
 const srcPath = path.resolve(__dirname, 'src');
+const entriesPath = path.resolve(srcPath, 'entries');
+const templatesPath = path.resolve(srcPath, 'templates');
 const buildPath = path.resolve(__dirname, 'build');
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
@@ -18,8 +20,8 @@ const buildConfig = {
 
   entry: {
     index: [
-      path.resolve(srcPath, 'index-scripts-entry.js'),
-      path.resolve(srcPath, 'index-styles-entry.js'),
+      path.resolve(entriesPath, 'index-scripts-entry.js'),
+      path.resolve(entriesPath, 'index-styles-entry.js'),
     ],
   },
   output: {
@@ -31,7 +33,7 @@ const buildConfig = {
     // Inject JavaScript bundle in a deferred <script> tag in built index.html document
     // https://github.com/jantimon/html-webpack-plugin#options
     new HtmlWebpackPlugin({
-      template: path.resolve(srcPath, 'index.template.html'),
+      template: path.resolve(templatesPath, 'index.template.html'),
       scriptLoading: 'defer',
       hash: true,
     }),
