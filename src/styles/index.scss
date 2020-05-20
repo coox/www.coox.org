@@ -1,11 +1,13 @@
 html,
 body {
-  background-color: #333;
   height: 100%;
   margin: 0;
   padding: 0;
+  transition: background-color 5s;
   width: 100%;
 
+  /* Default to dark mode */
+  background-color: #333;
   @media (prefers-color-scheme: light) {
     background-color: #ccc;
   }
@@ -23,15 +25,17 @@ body {
   width: 100%;
 
   .coox-hero-title {
-    z-index: 1;
-    color: #ccc;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 20vw;
     line-height: 30vw;
     margin: 0;
     padding-bottom: 2vw;
+    transition: color 5s;
+    z-index: 1;
 
+    /* Default to dark mode */
+    color: #ccc;
     @media (prefers-color-scheme: light) {
       color: #333;
     }
@@ -47,10 +51,16 @@ body {
   width: 100%;
 
   .coox-wave-strip {
-    border-bottom: 1vw solid #999;
-    border-top: 1vw solid #999;
     height: 100%;
-    transition: height 1s ease-out;
+    transition: border-color 5s, height 1s;
     width: 100%;
+
+    /* Default to dark mode */
+    border-bottom: 1vw solid #aaa;
+    border-top: 1vw solid #aaa;
+    @media (prefers-color-scheme: light) {
+      border-bottom: 1vw solid #666;
+      border-top: 1vw solid #666;
+    }
   }
 }
