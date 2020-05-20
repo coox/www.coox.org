@@ -3,7 +3,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  transition: background-color 5s;
+  transition: background-color 4s;
   width: 100%;
 
   /* Default to dark mode */
@@ -31,7 +31,7 @@ body {
     line-height: 30vw;
     margin: 0;
     padding-bottom: 2vw;
-    transition: color 5s;
+    transition: color 4s, font-size 1s;
     z-index: 1;
 
     /* Default to dark mode */
@@ -52,15 +52,15 @@ body {
 
   .coox-wave-strip {
     height: 100%;
-    transition: border-color 5s, height 1s;
+    transition: border-color 4s, height 1s;
     width: 100%;
 
     /* Default to dark mode */
-    border-bottom: 1vw solid #aaa;
-    border-top: 1vw solid #aaa;
+    border-bottom: 1vw solid #999;
+    border-top: 1vw solid #999;
     @media (prefers-color-scheme: light) {
-      border-bottom: 1vw solid #666;
-      border-top: 1vw solid #666;
+      border-bottom: 1vw solid #777;
+      border-top: 1vw solid #777;
     }
   }
 
@@ -69,15 +69,15 @@ body {
     line-height: 0;
     margin: 0;
     padding: 0;
-    transition: background-color 5s, color 1s;
+    transition: background-color 4s, color 1s;
     width: 0;
 
     /* Default to dark mode */
     background-color: #111;
-    color: #777;
+    color: #666;
     @media (prefers-color-scheme: light) {
       background-color: #eee;
-      color: #999;
+      color: #aaa;
     }
   }
 }
