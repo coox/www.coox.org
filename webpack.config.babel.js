@@ -52,6 +52,18 @@ const buildConfig = {
   module: {
     rules: [
       {
+        test: /\.template\.html$/,
+        use: [
+          { loader: 'html-loader' },
+          {
+            loader: 'nunjucks-html-loader',
+            options: {
+              searchPaths: [templatesPath],
+            },
+          },
+        ],
+      },
+      {
         test: /\.s?css$/,
         use: [
           {

@@ -1,51 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-  <!-- https://htmlhead.dev/ -->
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>coox.org</title>
-    <meta name="description" content="Personal Website of Éric Redon, full-stack web engineer" />
-    <meta name="keywords" content="engineer,web" />
-
-    <!-- Microsoft Internet Explorer: Force IE 8/9/10 to use its latest rendering engine -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-
-    <!-- Disable display of sitelinks searchbox in Google Search
-         https://developers.google.com/search/docs/data-types/sitelinks-searchbox#prevent-sitelinks-search-box
-    -->
-    <meta name="google" content="nositelinkssearchbox" />
-    <!-- Disable Google-provided translations of the document
-         https://support.google.com/webmasters/answer/79812
-    -->
-    <meta name="google" content="notranslate" />
-
-    <!-- Twitter Cards
-         https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started
-    -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@coox" />
-    <meta name="twitter:title" content="coox.org" />
-    <meta name="twitter:description" content="Personal Website of Éric Redon, full-stack web engineer" />
-
-    <!-- Open Graph metadata
-         https://ogp.me/#metadata
-    -->
-    <meta property="og:title" content="coox.org" />
-    <meta property="og:description" content="Personal Website of Éric Redon, full-stack web engineer" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.coox.org/" />
-  </head>
-
-  <body>
-    <header class="coox-hero">
-      <h1 id="hero-title" class="coox-hero-title">coox.org</h1>
-    </header>
-    <div class="coox-wave-strip-container">
-      <canvas id="wave-strip" class="coox-wave-strip" width="100%" height="100%" />
-      <div id="wave-strip-color-computer" class="coox-wave-strip-color-computer" />
-    </div>
-  </body>
-</html>
+{% extends "_partials/_base.template.html" %} {% block body %}
+<body>
+  <header class="coox-hero">
+    <h1 id="hero-title" class="coox-hero-title">coox.org</h1>
+  </header>
+  <div class="coox-wave-strip-container">
+    <canvas id="wave-strip" class="coox-wave-strip" width="100%" height="100%" />
+    <div id="wave-strip-color-computer" class="coox-wave-strip-color-computer" />
+  </div>
+</body>
+{% endblock body %}
