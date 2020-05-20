@@ -1,0 +1,69 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # https://github.com/actions/checkout#usage
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          # Checkout *all* repository history. This allows proper execution of
+          # the two upcoming  “change mtime” steps, intended to have webpack
+          # manage its cache consistently.
+          # https://github.com/webpack/webpack/issues/10707#issuecomment-613245056
+          fetch-depth: 0
+
+      # https://github.com/actions/setup-node#usage
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      # https://github.com/actions/cache#usage
+      - name: Cache NPM modules
+        uses: actions/cache@v1
+        env:
+          cache-name: node-modules-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-deploy-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-deploy-${{ env.cache-name }}-
+            ${{ runner.os }}-deploy-
+            ${{ runner.os }}-
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      # Next two steps aim to keep file modification timestamps of all files
+      # identical from one deploy to the next, to have webpack consistently
+      # determine whether it should preserve or invalidate its cache.
+      # https://github.com/webpack/webpack/issues/10707#issuecomment-613245056
+
+      - name: Change mtime of git managed file to respective their last commit time
+        run: |
+          git ls-tree -r --name-only HEAD | while read filename; do
+            touch -mt "$(git log -1 --pretty="format:%ad" --date=format:%Y%m%d%H%M.%S $filename)" "$filename"
+          done
+
+      - name: Change mtime of files under node_modules to last commit time of package-lock.json
+        run: |
+          package_lock_mtime=$(git log -1 --pretty="format:%ad" --date=format:%Y%m%d%H%M.%S package-lock.json)
+          find node_modules -type f -print0 | xargs -0 touch -mt $package_lock_mtime
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          cname: www.coox.org
