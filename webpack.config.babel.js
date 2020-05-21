@@ -3,6 +3,7 @@
 // This only works if @babel/register is an explicit project dependency.
 
 import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
+import HtmlWebpackInlineSVGPlugin from 'html-webpack-inline-svg-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -30,12 +31,20 @@ const buildConfig = {
   },
 
   plugins: [
-    // Inject JavaScript bundle in a deferred <script> tag in built index.html document
+    // Create HTML documents to serve entry chunks
+    // JavaScript bundles are referenced by an injected <script> tag
     // https://github.com/jantimon/html-webpack-plugin#options
     new HtmlWebpackPlugin({
       template: path.resolve(templatesPath, 'index.template.html'),
       scriptLoading: 'defer',
       hash: true,
+
+    // Inline all SVGs referenced by `<img>` tags in HTML document
+    // Since `runPreEmit` is true, this is done before html-webpack-plugin parsing
+    // https://github.com/theGC/html-webpack-inline-svg-plugin
+    new HtmlWebpackInlineSVGPlugin({
+      inlineAll: true,
+      runPreEmit: true,
     }),
 
     // Extract CSS dependencies to their own asset
@@ -44,7 +53,7 @@ const buildConfig = {
       filename: '[name].bundle.css',
     }),
 
-    // Inline extracted CSS dependencies in built index.html document
+    // Inline extracted CSS assets in HTML document
     // https://github.com/Runjuu/html-inline-css-webpack-plugin#config
     new HTMLInlineCSSWebpackPlugin(),
   ],
@@ -63,6 +72,7 @@ const buildConfig = {
           },
         ],
       },
+
       {
         test: /\.s?css$/,
         use: [
@@ -82,6 +92,21 @@ const buildConfig = {
         test: /\.m?js$/,
         use: {
           loader: 'babel-loader',
+        },
+      },
+
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            // HACK: `name` must be set to same path+filename as original resource
+            //       to allow html-webpack-inline-svg-plugin to work with webpack-dev-server
+            //       https://github.com/theGC/html-webpack-inline-svg-plugin/issues/19#issuecomment-548639977
+            name: '[path][name].[ext]',
+            // Do not actually emit SVG files in build
+            emitFile: false,
+          },
         },
       },
     ],
