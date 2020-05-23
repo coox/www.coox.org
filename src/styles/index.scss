@@ -65,8 +65,8 @@ body {
 
     @include color-scheme.default-to-dark-mode(
       $property-color-schemes: (
-        (border-bottom-color, #999, #777),
-        (border-top-color, #999, #777),
+        (border-bottom-color, #999, #666),
+        (border-top-color, #999, #666),
       ),
       $extend-transition: (
         $transition,
@@ -83,8 +83,8 @@ body {
 
     @include color-scheme.default-to-dark-mode(
       $property-color-schemes: (
-        (background-color, #111, #eee),
-        (color, #666, #aaa),
+        (background-color, #080808, #e8e8e8),
+        (color, #666, #999),
       )
     );
   }
