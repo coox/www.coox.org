@@ -25,6 +25,7 @@ const buildConfig = {
       path.resolve(entriesPath, 'index-scripts-entry.js'),
       path.resolve(entriesPath, 'index-styles-entry.js'),
     ],
+    resume: [path.resolve(entriesPath, 'resume/index-styles-entry.js')],
   },
   output: {
     path: buildPath,
@@ -43,6 +44,15 @@ const buildConfig = {
       template: path.resolve(templatesPath, 'index.template.html'),
       scriptLoading: 'defer',
       hash: true,
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'resume/index.html',
+      template: path.resolve(templatesPath, 'resume/index.template.html'),
+      inject: false,
+      hash: true,
+      chunks: ['resume'],
+    }),
 
     // Inline all SVGs referenced by `<img>` tags in HTML document
     // Since `runPreEmit` is true, this is done before html-webpack-plugin parsing
