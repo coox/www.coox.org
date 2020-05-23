@@ -1,0 +1,42 @@
+@use 'sass:list';
+
+$dark-mode-transition-duration: 4s;
+
+@mixin default-to-dark-mode(
+  $property-color-schemes: (),
+  $extend-transition: ()
+) {
+  $dark-mode-properties: ();
+  $light-mode-properties: ();
+  $transition-values: $extend-transition;
+
+  @each $property-name, $dark-mode-value,
+    $light-mode-value in $property-color-schemes
+  {
+    $transition-values: list.append(
+      $transition-values,
+      ($property-name $dark-mode-transition-duration),
+      $separator: comma
+    );
+    $dark-mode-properties: list.append(
+      $dark-mode-properties,
+      ($property-name $dark-mode-value)
+    );
+    $light-mode-properties: list.append(
+      $light-mode-properties,
+      ($property-name $light-mode-value)
+    );
+  }
+
+  transition: $transition-values;
+
+  @each $property-name, $value in $dark-mode-properties {
+    #{$property-name}: $value;
+  }
+
+  @media (prefers-color-scheme: light) {
+    @each $property-name, $value in $light-mode-properties {
+      #{$property-name}: $value;
+    }
+  }
+}
