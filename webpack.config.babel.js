@@ -2,6 +2,7 @@
 // it is loaded by webpack to be interpreted through Babel transpilation.
 // This only works if @babel/register is an explicit project dependency.
 
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
 import HtmlWebpackInlineSVGPlugin from 'html-webpack-inline-svg-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -31,6 +32,10 @@ const buildConfig = {
   },
 
   plugins: [
+    // Remove all files inside webpack’s `output.path` directory
+    // https://github.com/johnagan/clean-webpack-plugin#usage
+    new CleanWebpackPlugin(),
+
     // Create HTML documents to serve entry chunks
     // JavaScript bundles are referenced by an injected <script> tag
     // https://github.com/jantimon/html-webpack-plugin#options
