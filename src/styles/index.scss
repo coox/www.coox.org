@@ -1,16 +1,17 @@
+@use './_partials/color-scheme';
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  transition: background-color 4s;
   width: 100%;
 
-  /* Default to dark mode */
-  background-color: #333;
-  @media (prefers-color-scheme: light) {
-    background-color: #ccc;
-  }
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (background-color, #333, #ccc),
+    )
+  );
 }
 
 .coox-hero {
@@ -31,14 +32,18 @@ body {
     line-height: 30vw;
     margin: 0;
     padding-bottom: 2vw;
-    transition: color 4s, font-size 1s;
+    $transition: font-size 1s;
+    transition: $transition;
     z-index: 1;
 
-    /* Default to dark mode */
-    color: #ccc;
-    @media (prefers-color-scheme: light) {
-      color: #333;
-    }
+    @include color-scheme.default-to-dark-mode(
+      $property-color-schemes: (
+        (color, #ccc, #333),
+      ),
+      $extend-transition: (
+        $transition,
+      )
+    );
   }
 }
 
@@ -51,17 +56,22 @@ body {
   width: 100%;
 
   .coox-wave-strip {
+    border-bottom: 1vw solid;
+    border-top: 1vw solid;
     height: 100%;
-    transition: border-color 4s, height 1s;
+    $transition: height 1s;
+    transition: $transition;
     width: 100%;
 
-    /* Default to dark mode */
-    border-bottom: 1vw solid #999;
-    border-top: 1vw solid #999;
-    @media (prefers-color-scheme: light) {
-      border-bottom: 1vw solid #777;
-      border-top: 1vw solid #777;
-    }
+    @include color-scheme.default-to-dark-mode(
+      $property-color-schemes: (
+        (border-bottom-color, #999, #777),
+        (border-top-color, #999, #777),
+      ),
+      $extend-transition: (
+        $transition,
+      )
+    );
   }
 
   .coox-wave-strip-color-computer {
@@ -69,15 +79,13 @@ body {
     line-height: 0;
     margin: 0;
     padding: 0;
-    transition: background-color 4s, color 1s;
     width: 0;
 
-    /* Default to dark mode */
-    background-color: #111;
-    color: #666;
-    @media (prefers-color-scheme: light) {
-      background-color: #eee;
-      color: #aaa;
-    }
+    @include color-scheme.default-to-dark-mode(
+      $property-color-schemes: (
+        (background-color, #111, #eee),
+        (color, #666, #aaa),
+      )
+    );
   }
 }
