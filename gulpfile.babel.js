@@ -90,7 +90,10 @@ export const styles = async () =>
     .pipe(dest(paths.output, { sourcemaps: '.' }));
 
 export const serve = async () => {
-  watch([`${paths.pages}/${sources.pages}`], pages);
+  watch(
+    [`${paths.frontMatter}/**/*`, `${paths.pages}/${sources.pages}`],
+    pages
+  );
   watch([`${paths.scripts}/${sources.scripts}`], scripts);
   watch([`${paths.styles}/${sources.styles}`], styles);
 

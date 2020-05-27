@@ -1,6 +1,7 @@
 import path from 'path';
 
 export const paths = {
+  frontMatter: path.resolve(__dirname, 'src/front-matter'),
   output: path.resolve(__dirname, 'public'),
   pages: path.resolve(__dirname, 'src/pages'),
   scripts: path.resolve(__dirname, 'src/scripts'),
