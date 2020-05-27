@@ -1,0 +1,15 @@
+{% extends "_partials/_base.html" %} {% block styles %}
+<link href="index.css" rel="stylesheet" />
+{% endblock styles %} {% block scripts %}
+<script src="index.js" defer></script>
+{% endblock scripts %} {% block body %}
+<body>
+  <header class="coox-hero">
+    <h1 id="hero-title" class="coox-hero-title">coox.org</h1>
+  </header>
+  <div class="coox-wave-strip-container">
+    <canvas id="wave-strip" class="coox-wave-strip" width="100%" height="100%"></canvas>
+    <div id="wave-strip-color-computer" class="coox-wave-strip-color-computer"></div>
+  </div>
+</body>
+{% endblock body %}

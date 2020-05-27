@@ -1,5 +1,6 @@
-{% extends "_partials/_base.template.html" %} {% block title %}<title>Eric Redon — Résumé</title>{% endblock title %}{%
-block body %}
+{% extends "_partials/_base.html" %}{% block styles %}
+<link href="../resume/index.css" rel="stylesheet" />
+{% endblock styles %} {% block title %}<title>Eric Redon — Résumé</title>{% endblock title %}{% block body %}
 <body class="coox-resume-container">
   <article class="coox-resume">
     <header class="coox-resume-header">
@@ -16,7 +17,7 @@ block body %}
             >
               <img
                 class="coox-resume-header-social-network-icon"
-                src="~@fortawesome/fontawesome-free/svgs/brands/github.svg"
+                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/github.svg"
               />
             </a>
           </li>
@@ -29,7 +30,7 @@ block body %}
               rel="noopener noreferrer"
               ><img
                 class="coox-resume-header-social-network-icon"
-                src="~@fortawesome/fontawesome-free/svgs/brands/stack-overflow.svg"
+                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/stack-overflow.svg"
             /></a>
           </li>
           <li class="coox-resume-header-social-network">
@@ -42,7 +43,7 @@ block body %}
             >
               <img
                 class="coox-resume-header-social-network-icon"
-                src="~@fortawesome/fontawesome-free/svgs/brands/twitter.svg"
+                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/twitter.svg"
             /></a>
           </li>
           <li class="coox-resume-header-social-network">
@@ -55,7 +56,7 @@ block body %}
             >
               <img
                 class="coox-resume-header-social-network-icon"
-                src="~@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
+                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
             /></a>
           </li>
         </ul>
@@ -69,7 +70,10 @@ block body %}
             title="Send an e-mail"
             rel="noopener noreferrer"
           >
-            <img class="coox-resume-header-info-icon" src="~@fortawesome/fontawesome-free/svgs/regular/envelope.svg" />
+            <img
+              class="coox-resume-header-info-icon"
+              src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/envelope.svg"
+            />
             <span class="coox-resume-header-info-text">eric.redon@coox.org</span>
           </a>
         </li>
@@ -83,7 +87,7 @@ block body %}
           >
             <img
               class="coox-resume-header-info-icon"
-              src="~@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
+              src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
             />
             <span class="coox-resume-header-info-text">Montreuil, France</span>
           </a>
@@ -96,7 +100,10 @@ block body %}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img class="coox-resume-header-info-icon" src="~@fortawesome/fontawesome-free/svgs/regular/clock.svg" />
+            <img
+              class="coox-resume-header-info-icon"
+              src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/clock.svg"
+            />
             <span class="coox-resume-header-info-text">Europe/Paris</span>
           </a>
         </li>
