@@ -7,13 +7,16 @@ import log from 'fancy-log';
 import { rmdir } from 'fs';
 import { dest, series, parallel, src, watch } from 'gulp';
 import csso from 'gulp-csso';
+import fileinclude from 'gulp-file-include';
 import filter from 'gulp-filter';
+import frontMatter from 'gulp-front-matter';
 import gulpif from 'gulp-if';
 import injectSvg from 'gulp-inject-svg';
 import htmlMinifierTerser from 'gulp-html-minifier-terser';
 import nunjucks from 'gulp-nunjucks';
 import postcss from 'gulp-postcss';
 import sass from 'gulp-sass';
+import yaml from 'js-yaml';
 import path from 'path';
 import dartSass from 'sass';
 import { promisify } from 'util';
@@ -30,6 +33,18 @@ export const clean = async () => {
 export const pages = async () =>
   src([`${paths.pages}/${sources.pages}`])
     .pipe(filter([sources.pages, `!${excludes.pages}`]))
+    .pipe(
+      fileinclude({
+        filters: {
+          'front-matter': (contentAsJson) => {
+            const content = JSON.parse(contentAsJson);
+            const contentAsYaml = yaml.safeDump(content);
+            return `---\n${contentAsYaml}\n---\n`;
+          },
+        },
+      })
+    )
+    .pipe(frontMatter({ property: 'data' }))
     .pipe(nunjucks.compile())
     .pipe(
       injectSvg({
