@@ -1,0 +1,76 @@
+{
+  "work": [
+    {
+      "position": "Senior Software Engineer",
+      "employer": {
+        "name": "Gowento",
+        "location": "Paris, France",
+        "description": "",
+        "website": "https://www.gowento.com"
+      },
+      "timeframe": {
+        "start": "2016-05",
+        "end": "2020-02"
+      },
+      "keywords": [
+        "javascript",
+        "node.js",
+        "es2015",
+        "reactjs",
+        "babeljs",
+        "express",
+        "feathersjs",
+        "progressive-web-apps",
+        "nunjucks",
+        "html",
+        "semantic-ui",
+        "gulp",
+        "ava",
+        "mongodb",
+        "heroku",
+        "apns",
+        "git"
+      ],
+      "summary": [
+        "First hire of a startup company focused on helping retailers and brands engage with their customers through a permanent touchpoint on their smartphone.",
+        "In charge of designing, prototyping, building, deploying, maintaining all components of the SaaS solution, forming a tight duet with the CTO.",
+        "We keep an emphasis on the API-first quality of our service-oriented architecture, and focus on lean, continuous delivery to accomodate our customers while paving a stable ground for our own vision at scale. We keep our stack as ever-modern as possible, with strict organization and implementation standards, and rigorous testing."
+      ]
+    },
+    {
+      "position": "Co-founder, CTO",
+      "employer": {
+        "name": "GarageScore",
+        "location": "Cachan, France",
+        "description": "",
+        "website": "https://www.garagescore.com"
+      },
+      "timeframe": {
+        "start": "2014-11",
+        "end": "2016-04"
+      },
+      "keywords": [
+        "javascript",
+        "node.js",
+        "express",
+        "loopbackjs",
+        "passport.js",
+        "nunjucks",
+        "html",
+        "backbone.js",
+        "twitter-bootstrap-3",
+        "gulp",
+        "mocha",
+        "mongodb",
+        "heroku",
+        "git",
+        "bitbucket"
+      ],
+      "summary": [
+        "Co-founder of a startup company aiming at establishing long-lasting trust between vehicle owners and the automotive industry, by providing modern online tooling to car garages and dealers.",
+        "Owning all infrastructure and software, with a sensible responsibility in product planning, I iteratively devised and executed a roadmap to build a prototype from the ground up.",
+        "After positive reaction from our early adopters, I led development of additional features and integration with industry-standard ERPs, while scaling the service for growth and bringing onboard our first hire, effectively transforming our idea into a seed-funded company."
+      ]
+    }
+  ]
+}

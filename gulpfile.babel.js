@@ -23,18 +23,20 @@ import path from 'path';
 import dartSass from 'sass';
 import { promisify } from 'util';
 import webpack from 'webpack';
-import { excludes, isProductionBuild, paths, sources } from './build.config';
+import { isProductionBuild, output, sources } from './build.config';
 import webpackConfig from './webpack.config.babel';
 
 sass.compiler = dartSass;
 
+const server = browserSync.create();
+
 export const clean = async () => {
-  await promisify(rmdir)(paths.output, { recursive: true });
+  await promisify(rmdir)(output.path, { recursive: true });
 };
 
-export const pages = async () =>
-  src([`${paths.pages}/${sources.pages}`])
-    .pipe(filter([sources.pages, `!${excludes.pages}`]))
+export const buildPages = async () =>
+  src([`${sources.pages.path}/${sources.pages.includes}`])
+    .pipe(filter([sources.pages.includes, `!${sources.pages.excludes}`]))
     .pipe(
       fileinclude({
         filters: {
@@ -64,7 +66,7 @@ export const pages = async () =>
       injectSvg({
         // Currently, gulp-inject-svg resolves SVG file names sloppily.
         // To make it work, it must be passed both a relative path and a trailing slash.
-        base: `${path.relative(__dirname, paths.pages)}/`,
+        base: `${path.relative(__dirname, sources.pages.path)}/`,
       })
     )
     .pipe(
@@ -77,9 +79,9 @@ export const pages = async () =>
         })
       )
     )
-    .pipe(dest(paths.output));
+    .pipe(dest(output.path));
 
-export const scripts = () =>
+export const buildScripts = () =>
   new Promise((resolve, reject) => {
     webpack(webpackConfig, (err, stats) => {
       if (err) {
@@ -93,33 +95,47 @@ export const scripts = () =>
     });
   });
 
-export const styles = async () =>
-  src([`${paths.styles}/${sources.styles}`], {
+export const buildStyles = async () =>
+  src([`${sources.styles.path}/${sources.styles.includes}`], {
     sourcemaps: isProductionBuild,
   })
-    .pipe(filter([sources.styles, `!${excludes.styles}`]))
+    .pipe(filter([sources.styles.includes, `!${sources.styles.excludes}`]))
     .pipe(sass({ includePaths: ['node_modules'] }))
     .pipe(postcss())
     .pipe(gulpif(isProductionBuild, csso()))
-    .pipe(dest(paths.output, { sourcemaps: '.' }));
+    .pipe(dest(output.path, { sourcemaps: '.' }));
 
 export const serve = async () => {
-  watch(
-    [`${paths.frontMatter}/**/*`, `${paths.pages}/${sources.pages}`],
-    pages
-  );
-  watch([`${paths.scripts}/${sources.scripts}`], scripts);
-  watch([`${paths.styles}/${sources.styles}`], styles);
-
-  browserSync.init({
-    server: paths.output,
-    watch: true,
-    watchEvents: ['add', 'change', 'unlink', 'addDir', 'unlinkDir'],
+  server.init({
+    server: output.path,
   });
 };
 
-export const build = series(parallel(scripts, styles), pages);
+export const streamStylesToBrowsers = async () =>
+  src([`${output.path}/**/*.css`]).pipe(server.stream());
 
-export const localdev = series(clean, build, serve);
+export const signalReloadToBrowsers = async () => server.reload();
+
+export const watchSources = async () => {
+  watch(
+    [
+      `${sources.frontMatter.path}/${sources.frontMatter.includes}`,
+      `${sources.pages.path}/${sources.pages.includes}`,
+    ],
+    series(buildPages, signalReloadToBrowsers)
+  );
+  watch(
+    [`${sources.scripts.path}/${sources.scripts.includes}`],
+    series(buildScripts, signalReloadToBrowsers)
+  );
+  watch(
+    [`${sources.styles.path}/${sources.styles.includes}`],
+    series(buildStyles, streamStylesToBrowsers)
+  );
+};
+
+export const build = series(parallel(buildScripts, buildStyles), buildPages);
+
+export const dev = series(clean, build, serve, watchSources);
 
 export default series(clean, build);

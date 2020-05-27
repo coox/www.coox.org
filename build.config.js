@@ -1,22 +1,28 @@
 import path from 'path';
 
-export const paths = {
-  frontMatter: path.resolve(__dirname, 'src/front-matter'),
-  output: path.resolve(__dirname, 'public'),
-  pages: path.resolve(__dirname, 'src/pages'),
-  scripts: path.resolve(__dirname, 'src/scripts'),
-  styles: path.resolve(__dirname, 'src/styles'),
+export const output = {
+  path: path.resolve(__dirname, 'public'),
 };
 
 export const sources = {
-  pages: '**/*.html',
-  scripts: '**/*.js',
-  styles: '**/*.scss',
-};
-
-export const excludes = {
-  pages: '**/_partials/**/*.html',
-  styles: '**/_partials/**/*.scss',
+  frontMatter: {
+    path: path.resolve(__dirname, 'src/front-matter'),
+    includes: '**/*',
+  },
+  pages: {
+    path: path.resolve(__dirname, 'src/pages'),
+    includes: '**/*.html',
+    excludes: '**/_partials/**/*.html',
+  },
+  scripts: {
+    path: path.resolve(__dirname, 'src/scripts'),
+    includes: '**/*.js',
+  },
+  styles: {
+    path: path.resolve(__dirname, 'src/styles'),
+    includes: '**/*.scss',
+    excludes: '**/_partials/**/*.scss',
+  },
 };
 
 export const isProductionBuild = process.env.NODE_ENV === 'production';

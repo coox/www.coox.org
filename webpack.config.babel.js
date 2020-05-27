@@ -3,17 +3,17 @@
 // This only works if @babel/register is an explicit project dependency.
 
 import path from 'path';
-import { paths, isProductionBuild } from './build.config';
+import { isProductionBuild, output, sources } from './build.config';
 
 const buildConfig = {
   mode: isProductionBuild ? 'production' : 'development',
   devtool: isProductionBuild ? 'source-map' : false,
 
   entry: {
-    index: [path.resolve(paths.scripts, 'index.js')],
+    index: [path.resolve(sources.scripts.path, 'index.js')],
   },
   output: {
-    path: paths.output,
+    path: output.path,
     publicPath: '/public',
     filename: '[name].js',
   },
