@@ -3,6 +3,8 @@
 // This only works if @babel/register is an explicit project dependency.
 
 import browserSync from 'browser-sync';
+import { format as dateFormat, parseISO as dateParseISO } from 'date-fns';
+import { enUS as dateLocaleEn } from 'date-fns/locale';
 import log from 'fancy-log';
 import { rmdir } from 'fs';
 import { dest, series, parallel, src, watch } from 'gulp';
@@ -45,7 +47,19 @@ export const pages = async () =>
       })
     )
     .pipe(frontMatter({ property: 'data' }))
-    .pipe(nunjucks.compile())
+    .pipe(
+      nunjucks.compile(
+        {},
+        {
+          filters: {
+            date_format: (string, format = 'MMMM yyyy') => {
+              const date = dateParseISO(string);
+              return dateFormat(date, format, dateLocaleEn);
+            },
+          },
+        }
+      )
+    )
     .pipe(
       injectSvg({
         // Currently, gulp-inject-svg resolves SVG file names sloppily.
