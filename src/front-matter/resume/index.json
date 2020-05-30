@@ -1,76 +1,218 @@
 {
-  "work": [
-    {
-      "position": "Senior Software Engineer",
-      "employer": {
-        "name": "Gowento",
-        "location": "Paris, France",
-        "description": "",
-        "website": "https://www.gowento.com"
+  "resume": {
+    "work": [
+      {
+        "position": "Senior Software Engineer",
+        "employer": {
+          "name": "Gowento",
+          "location": "Paris, France",
+          "website": "https://www.gowento.com"
+        },
+        "timeframe": {
+          "start": "2016-05",
+          "end": "2020-02"
+        },
+        "keywords": [
+          "JavaScript",
+          "Node.js",
+          "React",
+          "MongoDB",
+          "Heroku",
+          "AWS"
+        ],
+        "summary": [
+          "First hire of a startup company focused on helping retailers and brands engage with their customers through a permanent touchpoint on their smartphone.",
+          "In charge of designing, prototyping, building, deploying, maintaining all components of the SaaS solution, forming a tight duet with the CTO.",
+          "We keep an emphasis on the API-first quality of our service-oriented architecture, and focus on lean, continuous delivery to accomodate our customers while paving a stable ground for our own vision at scale. We keep our stack as ever-modern as possible, with strict organization and implementation standards, and rigorous testing."
+        ]
       },
-      "timeframe": {
-        "start": "2016-05",
-        "end": "2020-02"
+
+      {
+        "position": "Co-founder and CTO",
+        "employer": {
+          "name": "GarageScore",
+          "location": "Arcueil, France",
+          "website": "https://www.garagescore.com"
+        },
+        "timeframe": {
+          "start": "2014-11",
+          "end": "2016-04"
+        },
+        "keywords": ["JavaScript", "Node.js", "MongoDB", "Heroku", "AWS"],
+        "summary": [
+          "Co-founder of a startup company aiming at establishing long-lasting trust between vehicle owners and the automotive industry, by providing modern online tooling to car garages and dealers.",
+          "Owning all infrastructure and software, with a sensible responsibility in product planning, I iteratively devised and executed a roadmap to build a prototype from the ground up.",
+          "After positive reaction from our early adopters, I led development of additional features and integration with industry-standard ERPs, while scaling the service for growth and bringing onboard our first hire, effectively transforming our idea into a seed-funded company."
+        ]
       },
-      "keywords": [
-        "javascript",
-        "node.js",
-        "es2015",
-        "reactjs",
-        "babeljs",
-        "express",
-        "feathersjs",
-        "progressive-web-apps",
-        "nunjucks",
-        "html",
-        "semantic-ui",
-        "gulp",
-        "ava",
-        "mongodb",
-        "heroku",
-        "apns",
-        "git"
-      ],
-      "summary": [
-        "First hire of a startup company focused on helping retailers and brands engage with their customers through a permanent touchpoint on their smartphone.",
-        "In charge of designing, prototyping, building, deploying, maintaining all components of the SaaS solution, forming a tight duet with the CTO.",
-        "We keep an emphasis on the API-first quality of our service-oriented architecture, and focus on lean, continuous delivery to accomodate our customers while paving a stable ground for our own vision at scale. We keep our stack as ever-modern as possible, with strict organization and implementation standards, and rigorous testing."
-      ]
-    },
-    {
-      "position": "Co-founder, CTO",
-      "employer": {
-        "name": "GarageScore",
-        "location": "Cachan, France",
-        "description": "",
-        "website": "https://www.garagescore.com"
+
+      {
+        "position": "Lead Software Engineer",
+        "employer": {
+          "name": "Qobuz Music Group",
+          "location": "Paris, France",
+          "website": "https://www.qobuz.com"
+        },
+        "timeframe": { "start": "2012-04", "end": "2014-02" },
+        "keywords": [
+          "PHP",
+          "Symfony",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Python",
+          "CentOS"
+        ],
+        "summary": [
+          "One of two leads in the Web Applications Team of up to seven developers, owning the web components of a music streaming and download service with a large audiophile community.",
+          "I led the development and refactoring efforts required to prepare international opening of the service, which had initially been designed for France only, and scale for resulting growth. Along that path, the following projects were completed:",
+          "Refactoring of the foundation layers of the web site to support a select set of locales on demand",
+          "Enhancements of payment systems to support multiple currencies, additional payment providers, time-based partial refunds, and basic fraud prevention",
+          "Implementation of an application internationalization workflow from scratch, with string discovery (in the code through static analysis, and in the data), typo safeguards, and basic translation reports",
+          "Refactoring of the user authentication pipeline with enhanced security across most web applications",
+          "Focusing on enhancing the productivity of the team as a whole, I encouraged a devops approach, aimed at continuous delivery, developed and harmonized standard flows, and ensured proper tooling. I ended up delivering:",
+          "Single-command builds, tests, and deploys to environments consistently modeled after the twelve-factor app methodology",
+          "Production-matching developer environments (Vagrant-based VMs) with nightly data snapshots",
+          "Migration of all code, developer guides and practices to GitHub",
+          "Encryption of sensitive data previously hard-coded all around"
+        ]
       },
-      "timeframe": {
-        "start": "2014-11",
-        "end": "2016-04"
+
+      {
+        "position": "Web Developer",
+        "employer": {
+          "name": "deviantART, Inc.",
+          "location": "Remote",
+          "website": "https://www.deviantart.com"
+        },
+        "timeframe": { "start": "2011-04", "end": "2012-04" },
+        "keywords": ["PHP", "JavaScript", "jQuery", "MySQL", "Debian"],
+        "summary": [
+          "Part of a globally distributed team of about 30 developers focusing on specific products while continuously maintaining the deviantART services overall.",
+          "As a member of the silo building the HTML5 drawing application deviantART muro, I was in charge of implementing the bulk of the initial services behind the Redraw feature, which records the actions of artists as they draw.",
+          "I delivered the internal REST API consumed by the tool from the browser, added support for the resulting artworks throughout other services such as the deviantART website or the Sta.sh cloud platform, and provided trustable server-side acceptance testing for the project as a whole."
+        ]
       },
-      "keywords": [
-        "javascript",
-        "node.js",
-        "express",
-        "loopbackjs",
-        "passport.js",
-        "nunjucks",
-        "html",
-        "backbone.js",
-        "twitter-bootstrap-3",
-        "gulp",
-        "mocha",
-        "mongodb",
-        "heroku",
-        "git",
-        "bitbucket"
-      ],
-      "summary": [
-        "Co-founder of a startup company aiming at establishing long-lasting trust between vehicle owners and the automotive industry, by providing modern online tooling to car garages and dealers.",
-        "Owning all infrastructure and software, with a sensible responsibility in product planning, I iteratively devised and executed a roadmap to build a prototype from the ground up.",
-        "After positive reaction from our early adopters, I led development of additional features and integration with industry-standard ERPs, while scaling the service for growth and bringing onboard our first hire, effectively transforming our idea into a seed-funded company."
-      ]
-    }
-  ]
+
+      {
+        "position": "Software Development Engineer",
+        "employer": {
+          "name": "AFNIC",
+          "location": "Montigny-le-Bretonneux, France",
+          "website": "https://www.afnic.fr"
+        },
+        "timeframe": { "start": "2007-09", "end": "2010-09" },
+        "keywords": ["Perl", "Oracle", "RHEL"],
+        "summary": [
+          "I was the third engineer in the team with ownership of the core registry services: domain registration and operations, DNS publishing, public Whois and EPP servers.",
+          "Our Perl codebase was aging, mostly undocumented, and grew too difficult to consume from our own Java back-office and PHP website. My main achievement was to draft, propose, implement, document and deploy a service-oriented gateway to the full registry platform, providing a turnkey API layer for other applications to easily consume legacy code from their own codebase within a globally referenced framework. I aimed at a strict yet cohesive design, with a focus on interoperability, ease of integration, extensibility, and exhaustivity.",
+          "The service was a success and became a central piece of the domain registration systems, serving millions of queries every day for Perl, Java, PHP, Python, and bash clients. Performance, not being an initial goal, was suboptimal, prompting me to prototype a backward-compatible model opting for the Apache Thrift serialization protocol, just before leaving the company.",
+          "During my time at AFNIC, I also jointly mentored a great engineer intern, who worked on the ZoneCheck project for six months towards a new major version which was open-sourced on schedule."
+        ]
+      },
+
+      {
+        "position": "Software Development Engineer",
+        "employer": {
+          "name": "Amazon",
+          "location": "Seattle, WA, USA",
+          "website": "https://www.amazon.com/"
+        },
+        "timeframe": { "start": "2004-08", "end": "2007-07" },
+        "keywords": ["Perl", "JavaScript", "RHEL"],
+        "summary": [
+          "My team consisted of about six to eight people. We owned customer-facing front-end widgets, and back-end services for retail of physical media products (books, music, video).",
+          "We were involved in a company-wide re-architecting effort towards a distributed service-oriented design. We rewrote basically all of our core code in order to gradually upgrade country-specific legacy codebases from proprietary C-like macros to predictably exposed, sustainable services (written in either C++, Java, or Perl) consumed by a single set of international-aware web components in a standard multi-tier architecture.",
+          "I also took an active role in engineer recruiting loops, performing more than 100 technical interviews that lead to about 10 hires for various teams in two years, and mentored two new hires in my own team."
+        ]
+      },
+
+      {
+        "position": "Software Support Engineer",
+        "employer": {
+          "name": "Amazon",
+          "location": "Guyancourt, France",
+          "website": "https://www.amazon.com"
+        },
+        "timeframe": { "start": "2002-02", "end": "2004-08" },
+        "keywords": ["Perl", "Oracle", "RHEL"],
+        "summary": [
+          "I was part of an international team of about 8 people, spread around the United States, the United Kingdom, France, and Japan. We owned support of systems and applications throughout Amazon's worldwide fulfilment center network.",
+          "We wrote and maintained automation scripts, custom data reports for local business owners of products and operations, and a lot of documentation on Amazon's continuously evolving fulfilment systems and software."
+        ]
+      },
+
+      {
+        "position": "Systems Engineer",
+        "employer": {
+          "name": "Amazon",
+          "location": "Orléans, France",
+          "website": "https://www.amazon.com"
+        },
+        "timeframe": { "start": "2000-08", "end": "2002-02" },
+        "keywords": ["Perl", "Oracle", "RHEL"],
+        "summary": [
+          "Initially on my own, locally in charge of administrating and supporting the UNIX production systems for Amazon.fr's fulfilment center. I ended up teaming up with all other systems engineers, and we got global, in charge of all systems throughout Amazon's worldwide fulfilment center network."
+        ]
+      },
+
+      {
+        "position": "Systems Engineer",
+        "employer": {
+          "name": "McKessonHBOC France",
+          "location": "Paris, France"
+        },
+        "timeframe": { "start": "1998-10", "end": "2000-07" },
+        "keywords": ["AIX", "SunOS"],
+        "summary": [
+          "Initially on my own, locally in charge of administrating and supporting the UNIX production systems for Amazon.fr's fulfilment center. I ended up teaming up with all other systems engineers, and we got global, in charge of all systems throughout Amazon's worldwide fulfilment center network."
+        ]
+      },
+
+      {
+        "position": "Software Development Engineer Intern",
+        "employer": {
+          "name": "WCube",
+          "location": "Les Ulis, France"
+        },
+        "timeframe": { "start": "1998-01", "end": "1998-07" },
+        "keywords": ["PHP", "MySQL"]
+      },
+
+      {
+        "position": "Software Development Engineer Intern",
+        "employer": {
+          "name": "HEC Entrepreneurs",
+          "location": "Jouy-en-Josas, France"
+        },
+        "timeframe": { "start": "1997-07", "end": "1998-01" },
+        "keywords": ["Delphi"]
+      },
+
+      {
+        "position": "Software Development Engineer Intern",
+        "employer": {
+          "name": "AFUU",
+          "location": "Paris, France"
+        },
+        "timeframe": { "start": "1996-09", "end": "1997-06" },
+        "keywords": ["Java", "SunOS"]
+      }
+    ],
+
+    "education": [
+      {
+        "institution": {
+          "name": "EFREI Paris",
+          "location": "Paris, France"
+        },
+        "degree": {
+          "name": "Ingénieur diplômé",
+          "major": "Majeure Informatique"
+        },
+        "timeframe": { "start": "1993", "end": "1998" },
+        "summary": ["MSc in Computer Science."]
+      }
+    ]
+  }
 }
