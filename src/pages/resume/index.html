@@ -1,115 +1,245 @@
-{% extends "_partials/_base.html" %}{% block styles %}
+@@include(front-matter('../../front-matter/resume/index.json')) {% extends "_partials/_base.html" %} {% block styles %}
 <link href="../resume/index.css" rel="stylesheet" />
 {% endblock %} {% block title %}<title>Eric Redon — Résumé</title>{% endblock %} {% block body %}
-<body class="coox-resume-container">
-  <article class="coox-resume">
-    <header class="coox-resume-header">
-      <section class="coox-resume-header-top pure-g">
-        <h1 class="pure-u-1 pure-u-sm-2-3">Éric Redon</h1>
-        <ul class="coox-resume-header-social-networks pure-u-1 pure-u-sm-1-3">
-          <li class="coox-resume-header-social-network">
+<body class="resume-container">
+  <article class="resume">
+    <header class="resume-header">
+      <section class="resume-header-top pure-g">
+        <h1 class="pure-u-1-2">Éric Redon</h1>
+        <ul class="resume-header-social-networks pure-u-1-2">
+          <li class="resume-header-social-network">
             <a
-              class="coox-resume-header-social-network-link"
+              class="resume-header-social-network-link"
               href="https://github.com/coox"
               title="Eric Redon (coox) on GitHub"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                class="coox-resume-header-social-network-icon"
+                class="resume-header-social-network-icon"
                 src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/github.svg"
               />
             </a>
           </li>
-          <li class="coox-resume-header-social-network">
+          <li class="resume-header-social-network">
             <a
-              class="coox-resume-header-social-network-link"
+              class="resume-header-social-network-link"
               href="https://stackoverflow.com/users/162086/coox"
               title="Eric Redon on Stack Overflow"
               target="_blank"
               rel="noopener noreferrer"
               ><img
-                class="coox-resume-header-social-network-icon"
+                class="resume-header-social-network-icon"
                 src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/stack-overflow.svg"
             /></a>
           </li>
-          <li class="coox-resume-header-social-network">
+          <li class="resume-header-social-network">
             <a
-              class="coox-resume-header-social-network-link"
+              class="resume-header-social-network-link"
               href="https://twitter.com/coox"
               title="Eric Redon (coox) on Twitter"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                class="coox-resume-header-social-network-icon"
+                class="resume-header-social-network-icon"
                 src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/twitter.svg"
             /></a>
           </li>
-          <li class="coox-resume-header-social-network">
+          <li class="resume-header-social-network">
             <a
-              class="coox-resume-header-social-network-link"
+              class="resume-header-social-network-link"
               href="https://www.linkedin.com/in/ericredon/"
               title="Eric Redon on LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                class="coox-resume-header-social-network-icon"
+                class="resume-header-social-network-icon"
                 src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
             /></a>
           </li>
         </ul>
       </section>
       <h2>Senior Full Stack Web Engineer</h2>
-      <ul class="coox-resume-header-infos">
-        <li class="coox-resume-header-info">
+      <ul class="resume-header-infos">
+        <li class="resume-header-info">
           <a
-            class="coox-resume-header-info-link"
+            class="resume-header-info-link"
             href="mailto:eric.redon@coox.org"
             title="Send an e-mail"
             rel="noopener noreferrer"
           >
             <img
-              class="coox-resume-header-info-icon"
+              class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/envelope.svg"
             />
-            <span class="coox-resume-header-info-text">eric.redon@coox.org</span>
+            <span class="resume-header-info-text">eric.redon@coox.org</span>
           </a>
         </li>
-        <li class="coox-resume-header-info">
+        <li class="resume-header-info">
           <a
-            class="coox-resume-header-info-link"
+            class="resume-header-info-link"
             href="https://www.openstreetmap.org/relation/129423"
             title="Montreuil, France on OpenStreetMap"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              class="coox-resume-header-info-icon"
+              class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
             />
-            <span class="coox-resume-header-info-text">Montreuil, France</span>
+            <span class="resume-header-info-text">Montreuil, France</span>
           </a>
         </li>
-        <li class="coox-resume-header-info">
+        <li class="resume-header-info">
           <a
-            class="coox-resume-header-info-link"
+            class="resume-header-info-link"
             href="https://time.is/Montreuil"
             title="Montreuil (Europe/Paris) on Time.is"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              class="coox-resume-header-info-icon"
+              class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/clock.svg"
             />
-            <span class="coox-resume-header-info-text">Europe/Paris</span>
+            <span class="resume-header-info-text">Europe/Paris</span>
           </a>
         </li>
       </ul>
     </header>
-    <main class="coox-resume-main pure-g"></main>
+
+    <main class="resume-content pure-g">
+      <section class="resume-content-section resume-content-work pure-u-1 pure-u-lg-3-5">
+        <div class="resume-content-part-1">
+          <header class="resume-content-section-top">
+            <h1>Work Experience</h1>
+          </header>
+          <div class="resume-work-container">
+            {% for work in resume.work %}
+            <article class="resume-work">
+              <h2>
+                <span class="resume-work-position">{{ work.position }}</span>
+                {% if work.employer.name %} ·
+                <span class="resume-work-employer-name">{{ work.employer.name }}</span>
+                {% endif %}
+              </h2>
+
+              <section class="resume-work-infos">
+                <span class="resume-work-timeframe">
+                  <img
+                    class="resume-work-timeframe-icon"
+                    src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
+                  />
+                  <span class="resume-work-timeframe-text">
+                    <time datetime="{{ work.timeframe.start }}">{{ work.timeframe.start | date_format }}</time>&nbsp;→
+                    {% if work.timeframe.end %}
+                    <time datetime="{{ work.timeframe.end }}">{{ work.timeframe.end | date_format }}</time>
+                    {% else %} present {% endif %}
+                  </span>
+                </span>
+
+                {% if work.employer.location %}
+                <span class="resume-work-employer-location">
+                  <img
+                    class="resume-work-employer-location-icon"
+                    src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
+                  />
+                  <span class="resume-work-employer-location-text">{{ work.employer.location }}</span>
+                </span>
+                {% endif %}
+              </section>
+              {% if work.keywords|length %}
+              <ul class="resume-work-keywords">
+                {% for keyword in work.keywords %}
+                <li class="resume-work-keyword">{{ keyword }}</li>
+                {% endfor %}
+              </ul>
+              {%endif%} {% if work.summary|length %}
+              <section class="resume-work-summary">
+                {% for paragraph in work.summary %}
+                <p>{{ paragraph }}</p>
+                {% endfor %}
+              </section>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <div class="pure-u-1 pure-u-lg-2-5">
+        <div class="resume-content-part-2 pure-g">
+          <section class="resume-content-section resume-content-skills pure-u-1">
+            <header class="resume-content-section-top">
+              <h1>Skills</h1>
+            </header>
+            <div class="resume-skills-container"></div>
+          </section>
+
+          <section class="resume-content-section resume-content-languages pure-u-1">
+            <header class="resume-content-section-top">
+              <h1>Languages</h1>
+            </header>
+            <div class="resume-languages-container"></div>
+          </section>
+
+          <section class="resume-content-section resume-content-education pure-u-1">
+            <header class="resume-content-section-top">
+              <h1>Education</h1>
+            </header>
+            <div class="resume-education-container">
+              {% for education in resume.education %}
+              <article class="resume-education">
+                <h2>
+                  <span class="resume-education-institution-name">{{ education.institution.name }}</span>
+                  {% if education.degree.major %} ·
+                  <span class="resume-education-degree-major">{{ education.degree.major }}</span>
+                  {% endif %}
+                </h2>
+
+                <section class="resume-education-infos">
+                  <span class="resume-education-timeframe">
+                    <img
+                      class="resume-education-timeframe-icon"
+                      src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
+                    />
+                    <span class="resume-education-timeframe-text">
+                      <time datetime="{{ education.timeframe.start }}"
+                        >{{ education.timeframe.start | date_format('yyyy') }}</time
+                      >&nbsp;→ {% if education.timeframe.end %}
+                      <time datetime="{{ education.timeframe.end }}"
+                        >{{ education.timeframe.end | date_format('yyyy') }}</time
+                      >
+                      {% else %} present {% endif %}
+                    </span>
+                  </span>
+
+                  {% if education.degree.name %}
+                  <span class="resume-education-degree-name">
+                    <img
+                      class="resume-education-degree-name-icon"
+                      src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/graduation-cap.svg"
+                    />
+                    <span class="resume-education-degree-name-text">{{ education.degree.name }}</span>
+                  </span>
+                  {% endif %} {% if education.summary|length %}
+                  <section class="resume-education-summary">
+                    {% for paragraph in education.summary %}
+                    <p>{{ paragraph }}</p>
+                    {% endfor %}
+                  </section>
+                  {% endif %}
+                </section>
+              </article>
+
+              {% endfor %}
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
   </article>
 </body>
 {% endblock %}

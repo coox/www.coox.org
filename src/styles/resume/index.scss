@@ -4,30 +4,36 @@
 @use '../_partials/color-scheme';
 @use '../_partials/pure';
 
-@mixin with-lg-proportional-property($property-name, $base-property-value) {
+@mixin with-sm-proportional-property($property-name, $base-property-value) {
   #{$property-name}: $base-property-value;
-  @include pure.pure-u-lg {
+  @include pure.pure-u-sm {
     #{$property-name}: #{$base-property-value * 1.25};
   }
 }
 
 @mixin drop-shadow {
-  filter: drop-shadow(0.15rem 0.15rem rgba(127, 127, 127, 0.5));
-  @include pure.pure-u-lg {
-    filter: drop-shadow(0.1875rem 0.1875rem rgba(127, 127, 127, 0.5));
+  filter: drop-shadow(0.15rem 0.15rem rgba(127, 127, 127, 0.25));
+  @include pure.pure-u-sm {
+    filter: drop-shadow(0.1875rem 0.1875rem rgba(127, 127, 127, 0.25));
   }
 }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-  padding: 0;
+/*
+   Apply a sans serif system font stack to all significant selectors
+   https://medium.com/@masakudamatsu/survey-system-font-stack-5f73a3b39776
+ */
+html,
+.pure-g [class*='pure-u'] {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu,
+    Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
-.coox-resume-container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+.resume-container {
+  padding: 0;
+  @include pure.pure-u-sm {
+    padding: 0.75rem;
+  }
 
   @include color-scheme.default-to-dark-mode(
     $property-color-schemes: (
@@ -35,251 +41,337 @@ h3 {
     )
   );
 
-  padding: 0;
+  h1,
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.resume {
+  border: 0;
+}
+.resume-header {
+  border-bottom-width: 0.125rem;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-style: solid;
+  border-top-width: 0;
   @include pure.pure-u-sm {
-    padding: 1rem;
+    border-left-width: 0.125rem;
+    border-right-width: 0.125rem;
+    border-top-width: 0.125rem;
   }
 
-  .coox-resume {
-    border: 0;
-    @include pure.pure-u-sm {
-      border-width: 0.125rem;
-      border-style: solid;
-    }
+  @include with-sm-proportional-property(margin-bottom, 1rem);
+  @include with-sm-proportional-property(padding, 0.75rem);
 
-    @include color-scheme.default-to-dark-mode(
-      $property-color-schemes: (
-        (border-color, #999, #666),
-      )
-    );
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (background-color, #080808, #f8f8f8),
+      (border-color, #999, #666),
+      (color, #eee, #111),
+    )
+  );
 
-    .coox-resume-header {
-      border-bottom-width: 0.125rem;
-      border-bottom-style: solid;
-      padding: 1.5rem;
+  h1,
+  h2 {
+    // https://medium.com/@masakudamatsu/survey-system-font-stack-5f73a3b39776
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Ubuntu, Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol';
+  }
 
-      @include color-scheme.default-to-dark-mode(
-        $property-color-schemes: (
-          (background-color, #080808, #f8f8f8),
-          (border-color, #999, #666),
-          (color, #eee, #111),
-        )
-      );
+  h1 {
+    @include with-sm-proportional-property(font-size, 2rem);
+  }
 
-      .coox-resume-header-top {
-        /*
+  h2 {
+    @include with-sm-proportional-property(font-size, 1.25rem);
+    @include with-sm-proportional-property(padding-bottom, 0.5rem);
+  }
+}
+.resume-header-top {
+  /*
           Padding for media queries narrower than “sm” sizes
           is applied at the bottom of social network icons.
           Padding for media queries with “sm” sizes or wider
           is applied at the bottom of text.
         */
-        padding-bottom: 0.75rem;
-        @include pure.pure-u-sm {
-          padding-bottom: 0;
-        }
+  padding: 0;
+}
+
+.resume-header-infos {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  @include with-sm-proportional-property(font-size, 1rem);
+
+  .resume-header-info {
+    display: block;
+    @include pure.pure-u-sm {
+      display: inline-block;
+    }
+
+    padding-bottom: 0.25rem;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    @include pure.pure-u-sm {
+      padding-bottom: 0;
+    }
+
+    .resume-header-info-link,
+    .resume-header-info-link:visited,
+    .resume-header-info-link:hover,
+    .resume-header-info-link:active {
+      text-decoration: none;
+    }
+
+    .resume-header-info-link {
+      .resume-header-info-icon,
+      .resume-header-info-icon:visited,
+      .resume-header-info-icon:hover,
+      .resume-header-info-icon:active {
+        @include color-scheme.default-to-dark-mode(
+          $property-color-schemes: (
+            (fill, #555, #aaa),
+          )
+        );
       }
 
-      h1 {
-        @include with-lg-proportional-property(font-size, 1.75rem);
+      .resume-header-info-text,
+      .resume-header-info-text:visited,
+      .resume-header-info-text:hover,
+      .resume-header-info-text:active {
+        @include color-scheme.default-to-dark-mode(
+          $property-color-schemes: (
+            (color, #ccc, #333),
+          )
+        );
       }
 
-      h2 {
-        @include with-lg-proportional-property(font-size, 1.25rem);
-        @include with-lg-proportional-property(padding-bottom, 0.5rem);
-      }
-
-      .coox-resume-header-infos {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-
-        @include with-lg-proportional-property(font-size, 1rem);
-
-        .coox-resume-header-info {
-          display: block;
-          @include pure.pure-u-sm {
-            display: inline-block;
-          }
-
-          .coox-resume-header-info-link,
-          .coox-resume-header-info-link:visited,
-          .coox-resume-header-info-link:hover,
-          .coox-resume-header-info-link:active {
-            text-decoration: none;
-          }
-
-          .coox-resume-header-info-link {
-            .coox-resume-header-info-icon,
-            .coox-resume-header-info-icon:visited,
-            .coox-resume-header-info-icon:hover,
-            .coox-resume-header-info-icon:active {
-              @include color-scheme.default-to-dark-mode(
-                $property-color-schemes: (
-                  (fill, #555, #aaa),
-                )
-              );
-            }
-
-            .coox-resume-header-info-text,
-            .coox-resume-header-info-text:visited,
-            .coox-resume-header-info-text:hover,
-            .coox-resume-header-info-text:active {
-              @include color-scheme.default-to-dark-mode(
-                $property-color-schemes: (
-                  (color, #ccc, #333),
-                )
-              );
-            }
-
-            .coox-resume-header-info-text:hover,
-            .coox-resume-header-info-text:active {
-              @include drop-shadow;
-            }
-          }
-
-          .coox-resume-header-info-icon {
-            vertical-align: bottom;
-
-            @include with-lg-proportional-property(height, 1rem);
-            @include with-lg-proportional-property(padding-right, 0.03125rem);
-            @include with-lg-proportional-property(width, 1rem);
-
-            @include color-scheme.default-to-dark-mode(
-              $property-color-schemes: (
-                (fill, #555, #aaa),
-              )
-            );
-          }
-
-          .coox-resume-header-info-text {
-            padding-right: 0.5rem;
-
-            @include color-scheme.default-to-dark-mode(
-              $property-color-schemes: (
-                (color, #ccc, #333),
-              )
-            );
-          }
-        }
-      }
-
-      .coox-resume-header-social-networks {
-        font-size: 0;
-        line-height: 0;
-        margin: 0;
-        padding: 0;
-
-        text-align: left;
-        @include pure.pure-u-sm {
-          text-align: right;
-        }
-
-        .coox-resume-header-social-network {
-          display: inline-block;
-
-          .coox-resume-header-social-network-link {
-            .coox-resume-header-social-network-icon,
-            .coox-resume-header-social-network-icon:visited,
-            .coox-resume-header-social-network-icon:hover,
-            .coox-resume-header-social-network-icon:active {
-              @include color-scheme.default-to-dark-mode(
-                $property-color-schemes: (
-                  (fill, #ccc, #333),
-                )
-              );
-            }
-
-            .coox-resume-header-social-network-icon:hover,
-            .coox-resume-header-social-network-icon:active {
-              @include drop-shadow;
-            }
-          }
-
-          .coox-resume-header-social-network-icon {
-            padding-left: 0;
-            padding-right: 0.5rem;
-
-            @include pure.pure-u-lg {
-              padding-left: 0.625rem;
-              padding-right: 0rem;
-            }
-
-            @include with-lg-proportional-property(height, 2rem);
-            @include with-lg-proportional-property(width, 2rem);
-          }
-        }
+      .resume-header-info-text:hover,
+      .resume-header-info-text:active {
+        @include drop-shadow;
       }
     }
 
-    .coox-resume-main {
-      padding: 1.5rem;
+    .resume-header-info-icon {
+      vertical-align: bottom;
+
+      @include with-sm-proportional-property(height, 1rem);
+      @include with-sm-proportional-property(padding-right, 0.03125rem);
+      @include with-sm-proportional-property(width, 1rem);
 
       @include color-scheme.default-to-dark-mode(
         $property-color-schemes: (
-          (background-color, #111, #eee),
-          (color, #eee, #111),
+          (fill, #555, #aaa),
+        )
+      );
+    }
+
+    .resume-header-info-text {
+      @include with-sm-proportional-property(padding-right, 0.5rem);
+
+      @include color-scheme.default-to-dark-mode(
+        $property-color-schemes: (
+          (color, #ccc, #333),
         )
       );
     }
   }
 }
 
-// .resume {
-//   background: #e0e0e0;
-//   margin: 0 auto;
-//   max-width: 60em;
-//   padding: 1em 1em;
-//   font-size: 0.85em;
-// }
+.resume-header-social-networks {
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
 
-// .resume h1,
-// h2,
-// h3 {
-//   margin-bottom: 0;
-// }
+  text-align: right;
 
-/*.headline {
-    margin-bottom: 1em;
+  .resume-header-social-network {
+    display: inline-block;
+
+    .resume-header-social-network-link {
+      .resume-header-social-network-icon,
+      .resume-header-social-network-icon:visited,
+      .resume-header-social-network-icon:hover,
+      .resume-header-social-network-icon:active {
+        @include color-scheme.default-to-dark-mode(
+          $property-color-schemes: (
+            (fill, #ccc, #333),
+          )
+        );
+      }
+
+      .resume-header-social-network-icon:hover,
+      .resume-header-social-network-icon:active {
+        @include drop-shadow;
+      }
+    }
+
+    .resume-header-social-network-icon {
+      padding-left: 0;
+      padding-right: 0.5rem;
+
+      @include pure.pure-u-sm {
+        padding-left: 0.625rem;
+        padding-right: 0rem;
+      }
+
+      @include with-sm-proportional-property(height, 2rem);
+      @include with-sm-proportional-property(width, 2rem);
+    }
+  }
 }
 
-.coox-resume-header-infos {
-    float: right;
-    font-size: 1.6em;
-    line-height: 1.6em;
+.resume-content-section {
+  @include with-sm-proportional-property(padding-bottom, 0.75rem);
 }
-*/
 
-// .summary {
-//   padding: 0 1em;
-//   font-size: 1.11em;
-//   color: #666;
-//   margin-bottom: 1em;
-// }
+.resume-content-part-1 {
+  @include pure.pure-u-lg {
+    padding-bottom: 0;
+    @include with-sm-proportional-property(padding-right, 0.75rem);
+  }
+}
 
-// .job {
-//   margin-bottom: 1em;
-// }
-// .timeframe {
-//   font-style: italic;
-//   color: #666;
-// }
-// .description {
-//   color: #555;
-// }
-// .description p {
-//   margin: 0.75em 0 1em 0;
-// }
-// .keywords {
-//   margin: 0;
-//   padding: 0;
-// }
-// .keyword {
-//   display: inline-block;
-//   font-size: 0.8em;
-//   color: #666;
-//   background: #eee;
-//   padding: 2px;
-//   border: 2px transparent;
-//   border-radius: 2px;
-//   margin-right: 0.25em;
-// }
+.resume-content-section-top {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0;
+  @include with-sm-proportional-property(border-top-left-radius, 0.75rem);
+  @include with-sm-proportional-property(border-top-right-radius, 0.75rem);
+  @include with-sm-proportional-property(padding, 0.75rem);
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (background-color, #222, #ddd),
+      (color, #eee, #111),
+    )
+  );
+
+  h1 {
+    @include with-sm-proportional-property(font-size, 1rem);
+  }
+}
+
+.resume-education-container,
+.resume-languages-container,
+.resume-skills-container,
+.resume-work-container {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0;
+
+  @include with-sm-proportional-property(border-bottom-left-radius, 0.75rem);
+  @include with-sm-proportional-property(border-bottom-right-radius, 0.75rem);
+  @include with-sm-proportional-property(padding, 0.75rem);
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (background-color, #080808, #f8f8f8),
+      (color, #eee, #111),
+    )
+  );
+}
+
+.resume-education,
+.resume-languages,
+.resume-skills,
+.resume-work {
+  @include with-sm-proportional-property(font-size, 0.8rem);
+  @include with-sm-proportional-property(padding-bottom, 0.75rem);
+
+  h2 {
+    @include with-sm-proportional-property(font-size, 1rem);
+    @include with-sm-proportional-property(padding-bottom, 0.25rem);
+  }
+
+  p {
+    @include with-sm-proportional-property(line-height, 1rem);
+    @include with-sm-proportional-property(margin-bottom, 0.5rem);
+    @include with-sm-proportional-property(margin-top, 0.5rem);
+  }
+}
+
+.resume-education:last-child,
+.resume-languages:last-child,
+.resume-skills:last-child,
+.resume-work:last-child {
+  padding-bottom: 0;
+}
+
+.resume-education-degree-major,
+.resume-work-employer-name {
+  font-weight: normal;
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (color, #ccc, #333),
+    )
+  );
+}
+
+.resume-education-infos,
+.resume-work-infos {
+  @include with-sm-proportional-property(padding-bottom, 0.2rem);
+}
+
+.resume-education-timeframe-icon,
+.resume-education-degree-name-icon,
+.resume-work-timeframe-icon,
+.resume-work-employer-location-icon {
+  vertical-align: top;
+
+  @include with-sm-proportional-property(height, 0.8rem);
+  @include with-sm-proportional-property(padding-right, 0.025rem);
+  @include with-sm-proportional-property(width, 1rem);
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (fill, #555, #aaa),
+    )
+  );
+}
+
+.resume-education-timeframe-text,
+.resume-education-degree-name-text,
+.resume-work-timeframe-text,
+.resume-work-employer-location-text {
+  @include with-sm-proportional-property(padding-right, 0.4rem);
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (color, #ccc, #333),
+    )
+  );
+}
+
+.resume-work-keywords {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  @include with-sm-proportional-property(padding-bottom, 0.125rem);
+
+  .resume-work-keyword {
+    $base-size: 0.725rem;
+    border: 0.2rem transparent;
+    border-radius: 0.4rem;
+    display: inline-block;
+    font-size: $base-size;
+    padding: 0.15rem 0.25rem;
+    margin-right: 0.0625rem;
+
+    @include color-scheme.default-to-dark-mode(
+      $property-color-schemes: (
+        (background-color, #222, #ddd),
+        (color, #aaa, #555),
+      )
+    );
+  }
+}
