@@ -108,6 +108,7 @@ export const buildStyles = async () =>
 export const serve = async () => {
   server.init({
     server: output.path,
+    open: false,
   });
 };
 
