@@ -25,9 +25,9 @@
   "license": "MIT",
   "homepage": "https://www.coox.org/",
   "devDependencies": {
-    "@babel/core": "7.10.0",
-    "@babel/preset-env": "7.10.0",
-    "@babel/register": "7.9.0",
+    "@babel/core": "7.10.1",
+    "@babel/preset-env": "7.10.1",
+    "@babel/register": "7.10.1",
     "@fortawesome/fontawesome-free": "5.13.0",
     "babel-loader": "8.1.0",
     "browser-sync": "2.26.7",
@@ -53,7 +53,7 @@
     "postcss-preset-env": "6.7.0",
     "prettier": "2.0.5",
     "purecss": "2.0.3",
-    "sass": "1.26.5",
+    "sass": "1.26.7",
     "webpack": "4.43.0"
   },
   "browserslist": [
