@@ -230,13 +230,12 @@ html,
   border-style: solid;
   border-width: 0;
   margin: 0 auto;
+  @include with-sm-proportional-property(border-radius, 0.75rem);
   @include with-sm-proportional-property(padding, 0.75rem);
 
-  border-radius: 0;
   max-width: 100%;
   @include pure.pure-u-sm {
     max-width: 80%;
-    @include with-sm-proportional-property(border-radius, 0.75rem);
   }
 
   @include color-scheme.default-to-dark-mode(
