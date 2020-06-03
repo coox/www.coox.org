@@ -30,6 +30,8 @@ html,
 }
 
 .resume-container {
+  margin: 0 auto;
+  max-width: 1400px;
   padding: 0;
   @include pure.pure-u-sm {
     padding: 0.75rem;
@@ -64,7 +66,7 @@ html,
     border-top-width: 0.125rem;
   }
 
-  @include with-sm-proportional-property(margin-bottom, 1rem);
+  @include with-sm-proportional-property(margin-bottom, 0.75rem);
   @include with-sm-proportional-property(padding, 0.75rem);
 
   @include color-scheme.default-to-dark-mode(
@@ -102,6 +104,7 @@ html,
   padding: 0;
 
   @include with-sm-proportional-property(font-size, 1rem);
+  @include with-sm-proportional-property(margin-bottom, 0.75rem);
 
   .resume-header-info {
     display: block;
@@ -211,7 +214,6 @@ html,
     .resume-header-social-network-icon {
       padding-left: 0;
       padding-right: 0.5rem;
-
       @include pure.pure-u-sm {
         padding-left: 0.625rem;
         padding-right: 0rem;
@@ -220,6 +222,42 @@ html,
       @include with-sm-proportional-property(height, 2rem);
       @include with-sm-proportional-property(width, 2rem);
     }
+  }
+}
+
+.resume-headline {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0;
+  margin: 0 auto;
+  @include with-sm-proportional-property(padding, 0.75rem);
+
+  border-radius: 0;
+  max-width: 100%;
+  @include pure.pure-u-sm {
+    max-width: 80%;
+    @include with-sm-proportional-property(border-radius, 0.75rem);
+  }
+
+  @include color-scheme.default-to-dark-mode(
+    $property-color-schemes: (
+      (background-color, #222, #ddd),
+      (color, #eee, #111),
+    )
+  );
+
+  p {
+    font-style: oblique;
+    @include with-sm-proportional-property(font-size, 1rem);
+    @include with-sm-proportional-property(margin-top, 0.5rem);
+    @include with-sm-proportional-property(margin-bottom, 0.5rem);
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 
