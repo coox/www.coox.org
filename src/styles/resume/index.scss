@@ -248,8 +248,9 @@ html,
   p {
     font-style: oblique;
     @include with-sm-proportional-property(font-size, 1rem);
-    @include with-sm-proportional-property(margin-top, 0.5rem);
-    @include with-sm-proportional-property(margin-bottom, 0.5rem);
+    @include with-sm-proportional-property(line-height, 1.5rem);
+    @include with-sm-proportional-property(margin-top, 0.75rem);
+    @include with-sm-proportional-property(margin-bottom, 0.75rem);
   }
 
   p:first-child {
