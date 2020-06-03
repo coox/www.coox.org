@@ -110,135 +110,129 @@
       </ul>
     </header>
 
-    <main class="resume-content pure-g">
-      <section class="resume-content-section resume-content-work pure-u-1 pure-u-lg-3-5">
-        <div class="resume-content-part-1">
-          <header class="resume-content-section-top">
-            <h1>Work Experience</h1>
-          </header>
-          <div class="resume-work-container">
-            {% for work in resume.work %}
-            <article class="resume-work">
-              <h2>
-                <span class="resume-work-position">{{ work.position }}</span>
-                {% if work.employer.name %} ·
-                <span class="resume-work-employer-name">{{ work.employer.name }}</span>
-                {% endif %}
-              </h2>
+    <main class="resume-content">
+      <section class="resume-content-section resume-content-section-work">
+        <header class="resume-content-section-top">
+          <h1>Work Experience</h1>
+        </header>
+        <div class="resume-work-container">
+          {% for work in resume.work %}
+          <article class="resume-work">
+            <h2>
+              <span class="resume-work-position">{{ work.position }}</span>
+              {% if work.employer.name %} ·
+              <span class="resume-work-employer-name">{{ work.employer.name }}</span>
+              {% endif %}
+            </h2>
 
-              <section class="resume-work-infos">
-                <span class="resume-work-timeframe">
-                  <img
-                    class="resume-work-timeframe-icon"
-                    src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
-                  />
-                  <span class="resume-work-timeframe-text">
-                    <time datetime="{{ work.timeframe.start }}">{{ work.timeframe.start | date_format }}</time>&nbsp;→
-                    {% if work.timeframe.end %}
-                    <time datetime="{{ work.timeframe.end }}">{{ work.timeframe.end | date_format }}</time>
-                    {% else %} present {% endif %}
-                  </span>
+            <section class="resume-work-infos">
+              <span class="resume-work-timeframe">
+                <img
+                  class="resume-work-timeframe-icon"
+                  src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
+                />
+                <span class="resume-work-timeframe-text">
+                  <time datetime="{{ work.timeframe.start }}">{{ work.timeframe.start | date_format }}</time>&nbsp;→ {%
+                  if work.timeframe.end %}
+                  <time datetime="{{ work.timeframe.end }}">{{ work.timeframe.end | date_format }}</time>
+                  {% else %} present {% endif %}
                 </span>
+              </span>
 
-                {% if work.employer.location %}
-                <span class="resume-work-employer-location">
-                  <img
-                    class="resume-work-employer-location-icon"
-                    src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
-                  />
-                  <span class="resume-work-employer-location-text">{{ work.employer.location }}</span>
+              {% if work.employer.location %}
+              <span class="resume-work-employer-location">
+                <img
+                  class="resume-work-employer-location-icon"
+                  src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
+                />
+                <span class="resume-work-employer-location-text">{{ work.employer.location }}</span>
+              </span>
+              {% endif %}
+            </section>
+            {% if work.keywords|length %}
+            <ul class="resume-work-keywords">
+              {% for keyword in work.keywords %}
+              <li class="resume-work-keyword">{{ keyword }}</li>
+              {% endfor %}
+            </ul>
+            {%endif%} {% if work.summary|length %}
+            <section class="resume-work-summary">
+              {% for paragraph in work.summary %}
+              <p>{{ paragraph }}</p>
+              {% endfor %}
+            </section>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="resume-content-section resume-content-section-skills">
+        <header class="resume-content-section-top">
+          <h1>Skills</h1>
+        </header>
+        <div class="resume-skills-container"></div>
+      </section>
+
+      <section class="resume-content-section resume-content-section-languages">
+        <header class="resume-content-section-top">
+          <h1>Languages</h1>
+        </header>
+        <div class="resume-languages-container"></div>
+      </section>
+
+      <section class="resume-content-section resume-content-section-education">
+        <header class="resume-content-section-top">
+          <h1>Education</h1>
+        </header>
+        <div class="resume-education-container">
+          {% for education in resume.education %}
+          <article class="resume-education">
+            <h2>
+              <span class="resume-education-institution-name">{{ education.institution.name }}</span>
+              {% if education.degree.major %} ·
+              <span class="resume-education-degree-major">{{ education.degree.major }}</span>
+              {% endif %}
+            </h2>
+
+            <section class="resume-education-infos">
+              <span class="resume-education-timeframe">
+                <img
+                  class="resume-education-timeframe-icon"
+                  src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
+                />
+                <span class="resume-education-timeframe-text">
+                  <time datetime="{{ education.timeframe.start }}"
+                    >{{ education.timeframe.start | date_format('yyyy') }}</time
+                  >&nbsp;→ {% if education.timeframe.end %}
+                  <time datetime="{{ education.timeframe.end }}"
+                    >{{ education.timeframe.end | date_format('yyyy') }}</time
+                  >
+                  {% else %} present {% endif %}
                 </span>
-                {% endif %}
-              </section>
-              {% if work.keywords|length %}
-              <ul class="resume-work-keywords">
-                {% for keyword in work.keywords %}
-                <li class="resume-work-keyword">{{ keyword }}</li>
-                {% endfor %}
-              </ul>
-              {%endif%} {% if work.summary|length %}
-              <section class="resume-work-summary">
-                {% for paragraph in work.summary %}
+              </span>
+
+              {% if education.degree.name %}
+              <span class="resume-education-degree-name">
+                <img
+                  class="resume-education-degree-name-icon"
+                  src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/graduation-cap.svg"
+                />
+                <span class="resume-education-degree-name-text">{{ education.degree.name }}</span>
+              </span>
+              {% endif %} {% if education.summary|length %}
+              <section class="resume-education-summary">
+                {% for paragraph in education.summary %}
                 <p>{{ paragraph }}</p>
                 {% endfor %}
               </section>
               {% endif %}
-            </article>
-            {% endfor %}
-          </div>
+            </section>
+          </article>
+
+          {% endfor %}
         </div>
       </section>
-
-      <div class="pure-u-1 pure-u-lg-2-5">
-        <div class="resume-content-part-2 pure-g">
-          <section class="resume-content-section resume-content-skills pure-u-1">
-            <header class="resume-content-section-top">
-              <h1>Skills</h1>
-            </header>
-            <div class="resume-skills-container"></div>
-          </section>
-
-          <section class="resume-content-section resume-content-languages pure-u-1">
-            <header class="resume-content-section-top">
-              <h1>Languages</h1>
-            </header>
-            <div class="resume-languages-container"></div>
-          </section>
-
-          <section class="resume-content-section resume-content-education pure-u-1">
-            <header class="resume-content-section-top">
-              <h1>Education</h1>
-            </header>
-            <div class="resume-education-container">
-              {% for education in resume.education %}
-              <article class="resume-education">
-                <h2>
-                  <span class="resume-education-institution-name">{{ education.institution.name }}</span>
-                  {% if education.degree.major %} ·
-                  <span class="resume-education-degree-major">{{ education.degree.major }}</span>
-                  {% endif %}
-                </h2>
-
-                <section class="resume-education-infos">
-                  <span class="resume-education-timeframe">
-                    <img
-                      class="resume-education-timeframe-icon"
-                      src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
-                    />
-                    <span class="resume-education-timeframe-text">
-                      <time datetime="{{ education.timeframe.start }}"
-                        >{{ education.timeframe.start | date_format('yyyy') }}</time
-                      >&nbsp;→ {% if education.timeframe.end %}
-                      <time datetime="{{ education.timeframe.end }}"
-                        >{{ education.timeframe.end | date_format('yyyy') }}</time
-                      >
-                      {% else %} present {% endif %}
-                    </span>
-                  </span>
-
-                  {% if education.degree.name %}
-                  <span class="resume-education-degree-name">
-                    <img
-                      class="resume-education-degree-name-icon"
-                      src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/graduation-cap.svg"
-                    />
-                    <span class="resume-education-degree-name-text">{{ education.degree.name }}</span>
-                  </span>
-                  {% endif %} {% if education.summary|length %}
-                  <section class="resume-education-summary">
-                    {% for paragraph in education.summary %}
-                    <p>{{ paragraph }}</p>
-                    {% endfor %}
-                  </section>
-                  {% endif %}
-                </section>
-              </article>
-
-              {% endfor %}
-            </div>
-          </section>
-        </div>
-      </div>
     </main>
   </article>
 </body>
