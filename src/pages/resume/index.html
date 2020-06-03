@@ -110,12 +110,12 @@
       </ul>
     </header>
 
-    <main class="resume-content">
-      <section class="resume-content-section resume-content-section-work">
-        <header class="resume-content-section-top">
+    <main class="resume-main">
+      <section class="resume-section-work-experience">
+        <header class="resume-section-top">
           <h1>Work Experience</h1>
         </header>
-        <div class="resume-work-container">
+        <article class="resume-work-experience">
           {% for work in resume.work %}
           <article class="resume-work">
             <h2>
@@ -155,7 +155,7 @@
               <li class="resume-work-keyword">{{ keyword }}</li>
               {% endfor %}
             </ul>
-            {%endif%} {% if work.summary|length %}
+            {% endif %} {% if work.summary|length %}
             <section class="resume-work-summary">
               {% for paragraph in work.summary %}
               <p>{{ paragraph }}</p>
@@ -164,34 +164,52 @@
             {% endif %}
           </article>
           {% endfor %}
-        </div>
+        </article>
       </section>
 
-      <section class="resume-content-section resume-content-section-skills">
-        <header class="resume-content-section-top">
+      <section class="resume-section-skills">
+        <header class="resume-section-top">
           <h1>Skills</h1>
         </header>
-        <div class="resume-skills-container"></div>
+        <article class="resume-skills">
+          {% for skill in resume.skills %}
+          <article class="resume-skill">
+            <h2>
+              <span class="resume-skill-name">{{ skill.name }}</span>&nbsp;·
+              <span class="resume-skill-keywords">{{ skill.keywords|join(', ') }}</span>
+            </h2>
+          </article>
+          {% endfor %}
+        </article>
       </section>
 
-      <section class="resume-content-section resume-content-section-languages">
-        <header class="resume-content-section-top">
+      <section class="resume-section-languages">
+        <header class="resume-section-top">
           <h1>Languages</h1>
         </header>
-        <div class="resume-languages-container"></div>
+        <article class="resume-languages">
+          {% for language in resume.languages %}
+          <article class="resume-language">
+            <h2>
+              <span class="resume-language-name">{{ language.language }}</span>&nbsp;·
+              <span class="resume-language-fluency">{{ language.fluency }}</span>
+            </h2>
+          </article>
+          {% endfor %}
+        </article>
       </section>
 
-      <section class="resume-content-section resume-content-section-education">
-        <header class="resume-content-section-top">
+      <section class="resume-section-education">
+        <header class="resume-section-top">
           <h1>Education</h1>
         </header>
-        <div class="resume-education-container">
-          {% for education in resume.education %}
-          <article class="resume-education">
+        <article class="resume-education">
+          {% for educationItem in resume.education %}
+          <article class="resume-education-item">
             <h2>
-              <span class="resume-education-institution-name">{{ education.institution.name }}</span>
-              {% if education.degree.major %} ·
-              <span class="resume-education-degree-major">{{ education.degree.major }}</span>
+              <span class="resume-education-institution-name">{{ educationItem.institution.name }}</span>
+              {%- if educationItem.degree.major %}&nbsp;·
+              <span class="resume-education-degree-major">{{ educationItem.degree.major }}</span>
               {% endif %}
             </h2>
 
@@ -202,36 +220,35 @@
                   src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/calendar-alt.svg"
                 />
                 <span class="resume-education-timeframe-text">
-                  <time datetime="{{ education.timeframe.start }}"
-                    >{{ education.timeframe.start | date_format('yyyy') }}</time
-                  >&nbsp;→ {% if education.timeframe.end %}
-                  <time datetime="{{ education.timeframe.end }}"
-                    >{{ education.timeframe.end | date_format('yyyy') }}</time
+                  <time datetime="{{ educationItem.timeframe.start }}"
+                    >{{ educationItem.timeframe.start | date_format('yyyy') }}</time
+                  >&nbsp;→ {% if educationItem.timeframe.end %}
+                  <time datetime="{{ educationItem.timeframe.end }}"
+                    >{{ educationItem.timeframe.end | date_format('yyyy') }}</time
                   >
                   {% else %} present {% endif %}
                 </span>
               </span>
 
-              {% if education.degree.name %}
+              {% if educationItem.degree.name %}
               <span class="resume-education-degree-name">
                 <img
                   class="resume-education-degree-name-icon"
                   src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/graduation-cap.svg"
                 />
-                <span class="resume-education-degree-name-text">{{ education.degree.name }}</span>
+                <span class="resume-education-degree-name-text">{{ educationItem.degree.name }}</span>
               </span>
-              {% endif %} {% if education.summary|length %}
+              {% endif %} {% if educationItem.summary|length %}
               <section class="resume-education-summary">
-                {% for paragraph in education.summary %}
+                {% for paragraph in educationItem.summary %}
                 <p>{{ paragraph }}</p>
                 {% endfor %}
               </section>
               {% endif %}
             </section>
           </article>
-
           {% endfor %}
-        </div>
+        </article>
       </section>
     </main>
   </article>

@@ -223,7 +223,7 @@ html,
   }
 }
 
-.resume-content {
+.resume-main {
   display: grid;
   @include with-sm-proportional-property(grid-gap, 0.75rem);
 
@@ -233,35 +233,46 @@ html,
   }
 }
 
-.resume-content-section-work {
+.resume-section-work-experience {
   grid-area: 2 / 1 / 3 / 2;
   @include pure.pure-u-lg {
     grid-area: 1 / 1 / 5 / 2;
   }
 }
 
-.resume-content-section-skills {
+.resume-section-skills {
   grid-area: 1 / 1 / 2 / 2;
   @include pure.pure-u-lg {
     grid-area: 1 / 2 / 2 / 3;
   }
 }
 
-.resume-content-section-languages {
+.resume-section-languages {
   grid-area: 3 / 1 / 4 / 2;
   @include pure.pure-u-lg {
     grid-area: 2 / 2 / 3 / 3;
   }
 }
 
-.resume-content-section-education {
+.resume-section-education {
   grid-area: 4 / 1 / 5 / 2;
   @include pure.pure-u-lg {
     grid-area: 3 / 2 / 4 / 3;
   }
 }
 
-.resume-content-section-top {
+.resume-section-work-experience,
+.resume-section-skills,
+.resume-section-languages,
+.resume-section-education {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  @include pure.pure-u-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.resume-section-top {
   border-color: transparent;
   border-style: solid;
   border-width: 0;
@@ -281,16 +292,17 @@ html,
   }
 }
 
-.resume-education-container,
-.resume-languages-container,
-.resume-skills-container,
-.resume-work-container {
+.resume-education,
+.resume-languages,
+.resume-skills,
+.resume-work-experience {
   border-color: transparent;
   border-style: solid;
   border-width: 0;
 
   @include with-sm-proportional-property(border-bottom-left-radius, 0.75rem);
   @include with-sm-proportional-property(border-bottom-right-radius, 0.75rem);
+  @include with-sm-proportional-property(font-size, 0.8rem);
   @include with-sm-proportional-property(padding, 0.75rem);
 
   @include color-scheme.default-to-dark-mode(
@@ -299,14 +311,6 @@ html,
       (color, #eee, #111),
     )
   );
-}
-
-.resume-education,
-.resume-languages,
-.resume-skills,
-.resume-work {
-  @include with-sm-proportional-property(font-size, 0.8rem);
-  @include with-sm-proportional-property(padding-bottom, 0.75rem);
 
   h2 {
     @include with-sm-proportional-property(font-size, 1rem);
@@ -320,14 +324,30 @@ html,
   }
 }
 
-.resume-education:last-child,
-.resume-languages:last-child,
-.resume-skills:last-child,
+.resume-language,
+.resume-skill {
+  @include with-sm-proportional-property(padding-bottom, 0.125rem);
+}
+
+.resume-education-item,
+.resume-work {
+  @include with-sm-proportional-property(padding-bottom, 0.5rem);
+}
+
+.resume-education-item:last-child,
+.resume-language:last-child,
+.resume-skill:last-child,
 .resume-work:last-child {
   padding-bottom: 0;
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .resume-education-degree-major,
+.resume-language-fluency,
+.resume-skill-keywords,
 .resume-work-employer-name {
   font-weight: normal;
 
