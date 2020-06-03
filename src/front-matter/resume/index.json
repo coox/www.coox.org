@@ -124,8 +124,7 @@
         "timeframe": { "start": "2002-02", "end": "2004-08" },
         "keywords": ["Perl", "Oracle", "RHEL"],
         "summary": [
-          "Part of a globally distributed team supporting systems and applications running Amazon’s worldwide supply chain sites.",
-          "Wrote and maintained automation scripts, documentation, and custom data reports for local business owners of products and operations."
+          "Part of a globally distributed team supporting systems and applications running Amazon’s worldwide supply chain premises."
         ]
       },
 
@@ -232,7 +231,7 @@
       },
       {
         "name": "Platform",
-        "keywords": ["Docker", "AWS EC2", "Linux"]
+        "keywords": ["Docker", "EC2", "Linux"]
       }
     ]
   }
