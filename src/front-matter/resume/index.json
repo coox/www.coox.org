@@ -231,7 +231,7 @@
       },
       {
         "name": "Platform",
-        "keywords": ["Docker", "EC2", "Linux"]
+        "keywords": ["Linux", "Docker", "EC2"]
       }
     ]
   }
