@@ -25,17 +25,14 @@ jobs:
           node-version: 14.x
 
       # https://github.com/actions/cache#usage
+      # https://github.com/actions/cache/blob/main/examples.md#node---npm
       - name: Cache NPM modules
-        uses: actions/cache@v1
-        env:
-          cache-name: node-modules-cache
+        uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-deploy-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-deploy-${{ env.cache-name }}-
-            ${{ runner.os }}-deploy-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
 
       - name: Install NPM dependencies
         run: npm install
