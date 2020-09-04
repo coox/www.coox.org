@@ -34,7 +34,7 @@ $dark-mode-transition-duration: 4s;
     #{$property-name}: $value;
   }
 
-  @media (prefers-color-scheme: light) {
+  @media screen and (prefers-color-scheme: light) {
     @each $property-name, $value in $light-mode-properties {
       #{$property-name}: $value;
     }
