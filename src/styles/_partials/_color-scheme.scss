@@ -28,7 +28,9 @@ $dark-mode-transition-duration: 4s;
     );
   }
 
-  transition: $transition-values;
+  @media screen {
+    transition: $transition-values;
+  }
 
   @each $property-name, $value in $dark-mode-properties {
     #{$property-name}: $value;

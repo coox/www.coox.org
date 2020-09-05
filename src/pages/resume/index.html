@@ -1,5 +1,6 @@
 @@include(front-matter('../../front-matter/resume/index.json')) {% extends "_partials/_base.html" %} {% block styles %}
-<link href="../resume/index.css" rel="stylesheet" />
+<link rel="stylesheet" href="../resume/index.css" />
+<link rel="stylesheet" media="print" href="../resume/index-print.css" />
 {% endblock %} {% block title %}<title>Eric Redon — Résumé</title>{% endblock %} {% block body %}
 <body class="resume-container">
   <article class="resume">
@@ -11,6 +12,7 @@
             <a
               class="resume-header-social-network-link"
               href="https://github.com/coox"
+              data-print-text="@coox"
               title="Eric Redon (coox) on GitHub"
               target="_blank"
               rel="noopener noreferrer"
@@ -25,6 +27,7 @@
             <a
               class="resume-header-social-network-link"
               href="https://stackoverflow.com/users/162086/eric-redon"
+              data-print-text="/users/162086"
               title="Eric Redon on Stack Overflow"
               target="_blank"
               rel="noopener noreferrer"
@@ -37,6 +40,7 @@
             <a
               class="resume-header-social-network-link"
               href="https://twitter.com/coox"
+              data-print-text="@coox"
               title="Eric Redon (coox) on Twitter"
               target="_blank"
               rel="noopener noreferrer"
@@ -50,6 +54,7 @@
             <a
               class="resume-header-social-network-link"
               href="https://www.linkedin.com/in/ericredon/"
+              data-print-text="/in/ericredon"
               title="Eric Redon on LinkedIn"
               target="_blank"
               rel="noopener noreferrer"

@@ -1,0 +1,291 @@
+/*
+   `with-rem-to-pt-property` is designed to convert “rem” property values
+   of screen styles to print media values expressed in points (“pt”).
+*/
+
+$rem-to-pt-ratio: (10pt / 1rem);
+@mixin with-rem-to-pt-property($property-name, $rem-value) {
+  #{$property-name}: #{($rem-value * $rem-to-pt-ratio)};
+}
+
+@page {
+  margin: 24pt 12pt;
+}
+
+/*
+   “Modern Georgia-based serif stack”
+   https://css-tricks.com/snippets/css/font-stacks/
+*/
+html,
+.pure-g [class*='pure-u'] {
+  font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
+    'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
+}
+
+.resume-container {
+  width: 100%;
+  max-width: none;
+
+  background: none;
+}
+
+.resume-header {
+  border-bottom-width: 1pt;
+
+  @include with-rem-to-pt-property(margin-bottom, 0.75rem);
+  @include with-rem-to-pt-property(padding, 0.75rem);
+
+  background: none;
+  border-color: #666;
+  color: #111;
+
+  h1,
+  h2 {
+    // https://css-tricks.com/snippets/css/font-stacks/
+    font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif',
+      Lucida, 'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif',
+      Georgia, serif;
+  }
+
+  h1 {
+    @include with-rem-to-pt-property(font-size, 2rem);
+  }
+
+  h2 {
+    @include with-rem-to-pt-property(font-size, 1.25rem);
+    @include with-rem-to-pt-property(padding-bottom, 0.5rem);
+  }
+}
+
+.resume-header-infos {
+  @include with-rem-to-pt-property(font-size, 1rem);
+  @include with-rem-to-pt-property(line-height, 1rem);
+  @include with-rem-to-pt-property(margin-bottom, 0.75rem);
+
+  .resume-header-info {
+    display: inline-block;
+    @include with-rem-to-pt-property(padding-bottom, 0.25rem);
+
+    .resume-header-info-link {
+      text-decoration: none;
+
+      .resume-header-info-icon,
+      .resume-header-info-icon:visited,
+      .resume-header-info-icon:hover,
+      .resume-header-info-icon:active {
+        fill: #aaa;
+      }
+
+      .resume-header-info-text,
+      .resume-header-info-text:visited,
+      .resume-header-info-text:hover,
+      .resume-header-info-text:active {
+        color: #333;
+      }
+    }
+
+    .resume-header-info-icon {
+      vertical-align: text-bottom;
+
+      @include with-rem-to-pt-property(height, 1rem);
+      @include with-rem-to-pt-property(padding-right, 0.03125rem);
+      @include with-rem-to-pt-property(width, 1rem);
+    }
+
+    .resume-header-info-text {
+      /*
+         “Helvetica/Arial-based sans serif stack”
+         https://css-tricks.com/snippets/css/font-stacks/
+      */
+      font-family: Frutiger, 'Frutiger Linotype', Univers, Calibri, 'Gill Sans',
+        'Gill Sans MT', 'Myriad Pro', Myriad, 'DejaVu Sans Condensed',
+        'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, 'Helvetica Neue',
+        Helvetica, Arial, sans-serif;
+      vertical-align: middle;
+
+      @include with-rem-to-pt-property(font-size, 1rem);
+      @include with-rem-to-pt-property(padding-right, 0.5rem);
+      @include with-rem-to-pt-property(line-height, 1rem);
+    }
+  }
+}
+
+.resume-header-social-networks {
+  @include with-rem-to-pt-property(font-size, 1rem);
+  @include with-rem-to-pt-property(line-height, 1rem);
+
+  .resume-header-social-network {
+    .resume-header-social-network-link {
+      text-decoration: none;
+
+      .resume-header-social-network-icon {
+        vertical-align: text-bottom;
+
+        @include with-rem-to-pt-property(height, 1rem);
+        @include with-rem-to-pt-property(padding-right, 0.03125rem);
+        @include with-rem-to-pt-property(width, 1rem);
+      }
+
+      .resume-header-social-network-icon,
+      .resume-header-social-network-icon:visited,
+      .resume-header-social-network-icon:hover,
+      .resume-header-social-network-icon:active {
+        fill: #aaa;
+      }
+
+      /*
+         Print “data-print-text” after each link icon
+      */
+      &::after {
+        color: #333;
+        content: attr(data-print-text);
+
+        /*
+           “Helvetica/Arial-based sans serif stack”
+           https://css-tricks.com/snippets/css/font-stacks/
+        */
+        font-family: Frutiger, 'Frutiger Linotype', Univers, Calibri,
+          'Gill Sans', 'Gill Sans MT', 'Myriad Pro', Myriad,
+          'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma,
+          Geneva, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        vertical-align: middle;
+
+        @include with-rem-to-pt-property(font-size, 1rem);
+        @include with-rem-to-pt-property(line-height, 1rem);
+        @include with-rem-to-pt-property(padding-right, 0.5rem);
+      }
+    }
+  }
+}
+
+.resume-headline {
+  background: none;
+  background-color: #ddd;
+  color: #111;
+  color-adjust: exact;
+  width: 90%;
+
+  @include with-rem-to-pt-property(border-radius, 0.75rem);
+  @include with-rem-to-pt-property(padding, 0.75rem);
+
+  p {
+    font-style: oblique;
+    @include with-rem-to-pt-property(font-size, 1rem);
+    @include with-rem-to-pt-property(line-height, 1.5rem);
+    @include with-rem-to-pt-property(margin-top, 0.75rem);
+    @include with-rem-to-pt-property(margin-bottom, 0.75rem);
+  }
+}
+
+.resume-section-work-experience,
+.resume-section-skills,
+.resume-section-languages,
+.resume-section-education {
+  background: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.resume-section-top {
+  background-color: #ddd;
+  border-width: 0;
+  border-radius: 0;
+  color: #111;
+  color-adjust: exact;
+
+  @include with-rem-to-pt-property(padding, 0.75rem);
+
+  h1 {
+    @include with-rem-to-pt-property(font-size, 1rem);
+  }
+}
+
+.resume-education,
+.resume-languages,
+.resume-skills,
+.resume-work-experience {
+  background: none;
+  border-radius: 0;
+  border: 0;
+  color: #111;
+
+  @include with-rem-to-pt-property(font-size, 0.8rem);
+  @include with-rem-to-pt-property(padding, 0.75rem);
+
+  h2 {
+    @include with-rem-to-pt-property(font-size, 1rem);
+    @include with-rem-to-pt-property(padding-bottom, 0.25rem);
+  }
+
+  p {
+    @include with-rem-to-pt-property(line-height, 1rem);
+    @include with-rem-to-pt-property(margin-bottom, 0.5rem);
+    @include with-rem-to-pt-property(margin-top, 0.5rem);
+  }
+}
+
+.resume-language,
+.resume-skill {
+  @include with-rem-to-pt-property(padding-bottom, 0.125rem);
+}
+
+.resume-education-item,
+.resume-work {
+  @include with-rem-to-pt-property(padding-bottom, 0.5rem);
+}
+
+.resume-education-degree-major,
+.resume-language-fluency,
+.resume-skill-keywords,
+.resume-work-employer-name {
+  color: #333;
+}
+
+.resume-education-infos,
+.resume-work-infos {
+  @include with-rem-to-pt-property(padding-bottom, 0.2rem);
+}
+
+.resume-education-timeframe-icon,
+.resume-education-degree-name-icon,
+.resume-work-timeframe-icon,
+.resume-work-employer-location-icon {
+  @include with-rem-to-pt-property(height, 0.8rem);
+  @include with-rem-to-pt-property(padding-right, 0.025rem);
+  @include with-rem-to-pt-property(width, 1rem);
+
+  color: #aaa;
+}
+
+.resume-education-timeframe-text,
+.resume-education-degree-name-text,
+.resume-work-timeframe-text,
+.resume-work-employer-location-text {
+  @include with-rem-to-pt-property(padding-right, 0.4rem);
+
+  color: #333;
+}
+
+.resume-work-keywords {
+  @include with-rem-to-pt-property(padding-bottom, 0.125rem);
+
+  .resume-work-keyword {
+    background-color: #ddd;
+    color: #555;
+    color-adjust: exact;
+
+    /*
+         “Helvetica/Arial-based sans serif stack”
+         https://css-tricks.com/snippets/css/font-stacks/
+      */
+    font-family: Frutiger, 'Frutiger Linotype', Univers, Calibri, 'Gill Sans',
+      'Gill Sans MT', 'Myriad Pro', Myriad, 'DejaVu Sans Condensed',
+      'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, 'Helvetica Neue',
+      Helvetica, Arial, sans-serif;
+    @include with-rem-to-pt-property(font-size, 0.725rem);
+    @include with-rem-to-pt-property(line-height, 0.725rem);
+
+    @include with-rem-to-pt-property(border-radius, 0.4rem);
+    @include with-rem-to-pt-property(margin-right, 0.0625rem);
+  }
+}
