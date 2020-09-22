@@ -1,5 +1,53 @@
 {
   "resume": {
+    "basics": {
+      "name": "Éric Redon",
+      "label": "Senior Full Stack Web Engineer",
+      "email": "eric.redon@coox.org",
+      "location": {
+        "city": "Montreuil",
+        "countryCode": "FR",
+        "links": [
+          {
+            "site": "OpenStreetMaps",
+            "url": "https://www.openstreetmap.org/relation/129423"
+          }
+        ]
+      },
+      "timezone": {
+        "name": "Europe/Paris",
+        "links": [{ "site": "Time.is", "url": "https://time.is/fr/CET" }]
+      },
+      "profiles": [
+        {
+          "network": "GitHub",
+          "username": "coox",
+          "url": "https://github.com/coox",
+          "printText": "@coox"
+        },
+        {
+          "network": "Stack Overflow",
+          "url": "https://stackoverflow.com/users/162086/eric-redon",
+          "printText": "/users/162086"
+        },
+        {
+          "network": "Twitter",
+          "username": "coox",
+          "url": "https://twitter.com/coox",
+          "printText": "@coox"
+        },
+        {
+          "network": "LinkedIn",
+          "url": "https://www.linkedin.com/in/ericredon/",
+          "printText": "/in/ericredon"
+        }
+      ]
+    },
+    "headline": [
+      "I am a software systems engineer with more than 20 years of professional experience humbly committed to crafting bits on the world wide web, a platform that never fails to fascinate me.",
+      "I trust standards and proven practices, yet I believe in user empowerment through knowledge, freedom, and emancipation.",
+      "Having worked in a broad range of contexts, from Big Tech to non-profit organization, from healthcare to the music industry, from established company to my own startup, I am today, more than ever, willing to build meaningful tools and products with like-minded people."
+    ],
     "work": [
       {
         "position": "Senior Software Engineer",

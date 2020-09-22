@@ -1,77 +1,42 @@
 @@include(front-matter('../../front-matter/resume/index.json')) {% extends "_partials/_base.html" %} {% block styles %}
 <link rel="stylesheet" href="../resume/index.css" />
 <link rel="stylesheet" media="print" href="../resume/index-print.css" />
-{% endblock %} {% block title %}<title>Eric Redon — Résumé</title>{% endblock %} {% block body %}
+{% endblock %} {% block title %}<title>{{ resume.basics.name }} — Résumé</title>{% endblock %} {% block body %}
 <body class="resume-container">
   <article class="resume">
     <header class="resume-header">
       <section class="resume-header-top pure-g">
-        <h1 class="pure-u-1-2">Éric Redon</h1>
+        <h1 class="pure-u-1-2">{{ resume.basics.name }}</h1>
         <ul class="resume-header-social-networks pure-u-1-2">
+          {% set svgBasePath = "../../node_modules/@fortawesome/fontawesome-free/svgs" %} {% set svgPathByNetwork = {
+          "GitHub": "brands/github.svg" ,"Stack Overflow": "brands/stack-overflow.svg" ,"Twitter": "brands/twitter.svg",
+          "LinkedIn": "brands/linkedin.svg" } %} {% for profile in resume.basics.profiles %}
           <li class="resume-header-social-network">
             <a
               class="resume-header-social-network-link"
-              href="https://github.com/coox"
-              data-print-text="@coox"
-              title="Eric Redon (coox) on GitHub"
+              href="{{ profile.url }}"
+              data-print-text="{{  profile.printText }}"
+              title="{{ resume.basics.name }}{% if profile.username %} ({{ profile.username }}){% endif %} on {{ profile.network }}"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 class="resume-header-social-network-icon"
-                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/github.svg"
+                src="{{ svgBasePath }}/{{ svgPathByNetwork[profile.network] }}"
               />
             </a>
           </li>
-          <li class="resume-header-social-network">
-            <a
-              class="resume-header-social-network-link"
-              href="https://stackoverflow.com/users/162086/eric-redon"
-              data-print-text="/users/162086"
-              title="Eric Redon on Stack Overflow"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><img
-                class="resume-header-social-network-icon"
-                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/stack-overflow.svg"
-            /></a>
-          </li>
-          <li class="resume-header-social-network">
-            <a
-              class="resume-header-social-network-link"
-              href="https://twitter.com/coox"
-              data-print-text="@coox"
-              title="Eric Redon (coox) on Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                class="resume-header-social-network-icon"
-                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/twitter.svg"
-            /></a>
-          </li>
-          <li class="resume-header-social-network">
-            <a
-              class="resume-header-social-network-link"
-              href="https://www.linkedin.com/in/ericredon/"
-              data-print-text="/in/ericredon"
-              title="Eric Redon on LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                class="resume-header-social-network-icon"
-                src="../../node_modules/@fortawesome/fontawesome-free/svgs/brands/linkedin.svg"
-            /></a>
-          </li>
+          {% endfor %}
         </ul>
       </section>
-      <h2>Senior Full Stack Web Engineer</h2>
+      <h2>{{ resume.basics.label }}</h2>
       <ul class="resume-header-infos">
+        {% set countryNameByCountryCode = { "FR": "France" } %} {% set locationCountryName =
+        countryNameByCountryCode[resume.basics.location.countryCode] %}
         <li class="resume-header-info">
           <a
             class="resume-header-info-link"
-            href="mailto:eric.redon@coox.org"
+            href="mailto:{{ resume.basics.email }}"
             title="Send an e-mail"
             rel="noopener noreferrer"
           >
@@ -79,14 +44,15 @@
               class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/envelope.svg"
             />
-            <span class="resume-header-info-text">eric.redon@coox.org</span>
+            <span class="resume-header-info-text">{{ resume.basics.email }}</span>
           </a>
         </li>
+        {% for locationLink in resume.basics.location.links %}
         <li class="resume-header-info">
           <a
             class="resume-header-info-link"
-            href="https://www.openstreetmap.org/relation/129423"
-            title="Montreuil, France on OpenStreetMap"
+            href="{{ locationLink.url }}"
+            title="{{ resume.basics.location.city }}, {{ locationCountryName }} on {{ locationLink.site }}"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -94,14 +60,15 @@
               class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/solid/map-marker-alt.svg"
             />
-            <span class="resume-header-info-text">Montreuil, France</span>
+            <span class="resume-header-info-text">{{ resume.basics.location.city }}, {{ locationCountryName }}</span>
           </a>
         </li>
+        {% endfor %} {% for timezoneLink in resume.basics.timezone.links %}
         <li class="resume-header-info">
           <a
             class="resume-header-info-link"
-            href="https://time.is/Montreuil"
-            title="Montreuil (Europe/Paris) on Time.is"
+            href="{{ timezoneLink.url }}"
+            title="{{ resume.basics.timezone.name }} on Time.is"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -109,24 +76,15 @@
               class="resume-header-info-icon"
               src="../../node_modules/@fortawesome/fontawesome-free/svgs/regular/clock.svg"
             />
-            <span class="resume-header-info-text">Europe/Paris</span>
+            <span class="resume-header-info-text">{{ resume.basics.timezone.name }}</span>
           </a>
         </li>
+        {% endfor %}
       </ul>
       <aside class="resume-headline">
-        <p>
-          I am a software systems engineer with more than 20 years of professional experience humbly committed to
-          crafting bits on the world wide web, a platform that never fails to fascinate me.
-        </p>
-        <p>
-          I trust standards and proven practices, yet I believe in user empowerment through knowledge, freedom, and
-          emancipation.
-        </p>
-        <p>
-          Having worked in a broad range of contexts, from Big Tech to non-profit organization, from healthcare to the
-          music industry, from established company to my own startup, I am today, more than ever, willing to build
-          meaningful tools and products with like-minded people.
-        </p>
+        {% for headlineParagraph in resume.headline %}
+        <p>{{ headlineParagraph }}</p>
+        {% endfor %}
       </aside>
     </header>
 
