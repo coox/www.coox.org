@@ -44,8 +44,8 @@
       ]
     },
     "headline": [
-      "I am a software systems engineer with more than 20 years of professional experience humbly committed to crafting bits on the world wide web, a platform that never fails to fascinate me.",
-      "I trust standards and proven practices, yet I believe in user empowerment through knowledge, freedom, and emancipation.",
+      "I am a software systems engineer with more than 20 years of professional experience committed to humbly crafting bits on the world wide web, a platform that never fails to fascinate me.",
+      "I trust in standards and proven practices, yet I believe in user empowerment through knowledge, freedom, and emancipation.",
       "Having worked in a broad range of contexts, from Big Tech to non-profit organization, from healthcare to the music industry, from established company to my own startup, I am today, more than ever, willing to build meaningful tools and products with like-minded people."
     ],
     "work": [
@@ -71,8 +71,8 @@
           "AWS"
         ],
         "summary": [
-          "First hire, sharing the responsibility of all software aspects of the product directly with the CTO, embracing lean, continuous delivery, and DevOps practices.",
-          "Designed, developed, deployed, and maintained backend services (REST API, data connectors…), frontend components (back office, public web applications), and infrastructure tooling."
+          "First hire, sharing the responsibility of all software aspects of the product directly with the CTO. Embracing lean and DevOps practices for continuous delivery.",
+          "Designed, developed, deployed, and maintained backend services (REST API, data exchange connectors…), frontend components (back office, mobile wallet emulator progressive web app), and infrastructure tooling (developer environment and documentation, certificate management…)."
         ]
       },
 
@@ -87,7 +87,14 @@
           "start": "2014-11",
           "end": "2016-04"
         },
-        "keywords": ["JavaScript", "Node.js", "MongoDB", "Heroku", "AWS"],
+        "keywords": [
+          "JavaScript",
+          "Node.js",
+          "MongoDB",
+          "Heroku",
+          "AWS",
+          "SEO"
+        ],
         "summary": [
           "Owner of all infrastructure and software.",
           "Devised, built and launched the first product of the company before seed funding: a minimal web application consuming a REST API on top of a backend with ERP integrations."
