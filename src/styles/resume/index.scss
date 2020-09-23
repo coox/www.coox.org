@@ -401,6 +401,13 @@ html,
   );
 }
 
+.resume-work-employer-name,
+.resume-work-employer-name:visited,
+.resume-work-employer-name:hover,
+.resume-work-employer-name:active {
+  text-decoration: none;
+}
+
 .resume-education-infos,
 .resume-work-infos {
   @include with-sm-proportional-property(padding-bottom, 0.2rem);

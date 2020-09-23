@@ -98,9 +98,17 @@
           <article class="resume-work">
             <h2>
               <span class="resume-work-position">{{ work.position }}</span>
-              {% if work.employer.name %} ·
+              {% if work.employer.name %} · {% if work.employer.website %}
+              <a
+                class="resume-work-employer-name"
+                href="{{ work.employer.website }}"
+                title="{{ work.employer.name }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ work.employer.name }}</a
+              >{% else %}
               <span class="resume-work-employer-name">{{ work.employer.name }}</span>
-              {% endif %}
+              {% endif%} {% endif %}
             </h2>
 
             <section class="resume-work-infos">
