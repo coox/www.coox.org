@@ -20,7 +20,12 @@ module.exports = {
     // Enforce rules that report common problems
     // https://eslint.org/docs/user-guide/configuring#using-eslint-recommended
     'eslint:recommended',
-    // Enforce both eslint-plugin-prettier and eslint-config-prettier
+    // Integrate with Prettier by doing three things:
+    // - leverage `eslint-config-prettier` to disable all formatting-related
+    //   ESLint rules that are unnecessary or might conflict with Prettier
+    // - set the `prettier/prettier` rule to `"error"`
+    // - enable `eslint-plugin-prettier` to enforce Prettier’s own configuration
+    //   (honoring `.prettierignore` and `prettier.config.js`)
     // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
     'plugin:prettier/recommended',
   ],

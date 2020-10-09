@@ -1,5 +1,8 @@
 # In addition to any patterns in a `.eslintignore` file,
-# ESLint ignores files in `/**/node_modules/*` by default.
+# ESLint always follows a couple implicit ignore rules:
+# - `node_modules/` is ignored
+# - Dotfiles (except for `.eslintrc.*`) as well as Dotfolders
+#   and their contents are ignored
 # https://eslint.org/docs/user-guide/configuring#eslintignore
 
 public/
