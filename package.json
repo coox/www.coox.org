@@ -10,11 +10,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "format": "prettier . --write",
-    "ignore-sync": "ignore-sync ."
+    "ignore-sync": "ignore-sync .",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "astro": "5.1.9",
     "ignore-sync": "8.0.0",
-    "prettier": "3.4.2"
+    "prettier": "3.4.2",
+    "typescript": "5.7.3"
   }
 }
