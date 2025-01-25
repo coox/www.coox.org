@@ -1,0 +1,8 @@
+[github/gitignore]
+Global/Linux.gitignore
+Global/VisualStudioCode.gitignore
+Global/Windows.gitignore
+Global/macOS.gitignore
+Node.gitignore
+
+[inline]

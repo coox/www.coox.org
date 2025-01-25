@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "ignore-sync": "ignore-sync ."
+  },
   "devDependencies": {
     "ignore-sync": "8.0.0"
   }
