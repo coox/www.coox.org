@@ -1,4 +1,10 @@
 {
+  "name": "www.coox.org",
+  "author": "Éric Redon <eric.redon@coox.org> (https://www.coox.org/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coox/www.coox.org.git"
+  },
   "scripts": {
     "ignore-sync": "ignore-sync ."
   },
