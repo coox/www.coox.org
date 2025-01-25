@@ -1,0 +1,8 @@
+# By default prettier ignores files in version control systems directories
+# (".git", ".jj", ".sl", ".svn" and ".hg") and `node_modules` (unless the
+# `--with-node-modules` CLI option is specified). Prettier will also follow
+# rules specified in the ".gitignore" file if it exists in the same directory
+# from which it is run.
+# https://prettier.io/docs/en/ignore#ignoring-files-prettierignore
+
+public/

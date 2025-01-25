@@ -9,10 +9,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "format": "prettier . --write",
     "ignore-sync": "ignore-sync ."
   },
   "devDependencies": {
     "astro": "5.1.9",
-    "ignore-sync": "8.0.0"
+    "ignore-sync": "8.0.0",
+    "prettier": "3.4.2"
   }
 }
