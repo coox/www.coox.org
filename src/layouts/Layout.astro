@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <!-- https://htmlhead.dev/ -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>www.coox.org</title>
+
+    <!-- Disable Google-provided translation for this page
+         https://developers.google.com/search/docs/crawling-indexing/special-tags#notranslate -->
+    <meta name="google" content="notranslate" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -5,10 +5,14 @@
     "type": "git",
     "url": "git+https://github.com/coox/www.coox.org.git"
   },
+  "type": "module",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
     "ignore-sync": "ignore-sync ."
   },
   "devDependencies": {
+    "astro": "5.1.9",
     "ignore-sync": "8.0.0"
   }
 }

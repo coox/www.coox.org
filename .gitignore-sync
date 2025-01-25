@@ -6,3 +6,12 @@ Global/macOS.gitignore
 Node.gitignore
 
 [inline]
+# build output
+dist/
+
+# generated types
+.astro/
+
+# environment variables
+.env
+.env.production
