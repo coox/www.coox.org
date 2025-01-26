@@ -1,0 +1,220 @@
+<header class="coox-hero">
+  <h1 id="hero-title" class="coox-hero-title">coox.org</h1>
+</header>
+<div class="coox-wave-strip-container">
+  <canvas id="wave-strip" class="coox-wave-strip" width="100%" height="100%"
+  ></canvas>
+  <div id="wave-strip-color-computer" class="coox-wave-strip-color-computer">
+  </div>
+</div>
+
+<style lang="scss">
+  @use "../styles/color-scheme.scss";
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @include color-scheme.default-to-dark-mode(
+      $property-color-schemes: (
+        (background-color, #333, #ccc),
+      )
+    );
+  }
+
+  .coox-hero {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    .coox-hero-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+      font-size: 20vw;
+      line-height: 30vw;
+      margin: 0;
+      padding-bottom: 2vw;
+      $transition: font-size 1s;
+      transition: $transition;
+      z-index: 1;
+
+      @include color-scheme.default-to-dark-mode(
+        $property-color-schemes: (
+          (color, #ccc, #333),
+        ),
+        $extend-transition: (
+          $transition,
+        )
+      );
+    }
+  }
+
+  .coox-wave-strip-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+
+    .coox-wave-strip {
+      border-bottom: 1vw solid;
+      border-top: 1vw solid;
+      height: 100%;
+      $transition: height 1s;
+      transition: $transition;
+      width: 100%;
+
+      @include color-scheme.default-to-dark-mode(
+        $property-color-schemes: (
+          (border-bottom-color, #999, #666),
+          (border-top-color, #999, #666),
+        ),
+        $extend-transition: (
+          $transition,
+        )
+      );
+    }
+
+    .coox-wave-strip-color-computer {
+      height: 0;
+      line-height: 0;
+      margin: 0;
+      padding: 0;
+      width: 0;
+
+      @include color-scheme.default-to-dark-mode(
+        $property-color-schemes: (
+          (background-color, #080808, #e8e8e8),
+          (color, #666, #999),
+        )
+      );
+    }
+  }
+</style>
+
+<script>
+  const doesBrowserSupportCanvas: boolean =
+    (function initializeDoesBrowserSupportCanvas() {
+      const elem = document.createElement("canvas");
+      return !!(elem.getContext && elem.getContext("2d"));
+    })();
+
+  const doesBrowserSupportRequestAnimationFrame: boolean =
+    (function initializeDoesBrowserSupportRequestAnimationFrame() {
+      return !!window.requestAnimationFrame;
+    })();
+
+  function initializeContext(
+    canvasId: string
+  ): CanvasRenderingContext2D | null {
+    const canvas = window.document.getElementById(
+      canvasId
+    ) as HTMLCanvasElement | null;
+
+    if (canvas === null) {
+      return null;
+    }
+
+    // Setting the `alpha` 2d context attribute to false as an attempt to
+    // achieve faster performance.
+    return canvas.getContext("2d", { alpha: false });
+  }
+
+  function initializeDrawWaveStripFrame(context: CanvasRenderingContext2D) {
+    const heroTitleElement = window.document.getElementById("hero-title");
+    const waveStripColorComputerElement = window.document.getElementById(
+      "wave-strip-color-computer"
+    );
+
+    return function drawWaveStripFrame() {
+      if (heroTitleElement === null || waveStripColorComputerElement === null) {
+        return;
+      }
+
+      const canvasWidth = heroTitleElement.clientWidth;
+      const canvasHeight = heroTitleElement.clientHeight;
+
+      const halfCanvasHeight = Math.floor(canvasHeight / 2);
+
+      // Override logical canvas DOM element width and height properties
+      context.canvas.width = canvasWidth;
+      context.canvas.height = canvasHeight;
+
+      // Canvas styled width always remains 100%
+      // Canvas styled height is overridden to trigger CSS transition on resize
+      context.canvas.style.height = `${canvasHeight}px`;
+
+      // Read colors from computed style to honor color scheme CSS transitions
+      const waveStripColorComputerElementStyle = window.getComputedStyle(
+        waveStripColorComputerElement
+      );
+
+      context.fillStyle = waveStripColorComputerElementStyle.backgroundColor;
+      context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+      context.beginPath();
+      context.moveTo(0, halfCanvasHeight);
+      for (
+        let i = 8 + Math.ceil(16 * Math.random());
+        i < canvasWidth - 8;
+        i += 8 + Math.ceil(16 * Math.random())
+      ) {
+        context.lineTo(i, Math.ceil(canvasHeight * Math.random()));
+      }
+      context.lineTo(canvasWidth - 1, halfCanvasHeight);
+
+      context.lineWidth = 4;
+      context.strokeStyle = waveStripColorComputerElementStyle.color;
+      context.stroke();
+    };
+  }
+
+  export function drawStillWaveStrip(canvasId: string): void {
+    if (
+      !(doesBrowserSupportCanvas && doesBrowserSupportRequestAnimationFrame)
+    ) {
+      return;
+    }
+    const context = initializeContext(canvasId);
+    if (context === null) {
+      return;
+    }
+
+    const drawWaveStripFrame = initializeDrawWaveStripFrame(context);
+
+    drawWaveStripFrame();
+  }
+
+  export function drawAnimatedWaveStrip(canvasId: string): void {
+    if (
+      !(doesBrowserSupportCanvas && doesBrowserSupportRequestAnimationFrame)
+    ) {
+      return;
+    }
+    const context = initializeContext(canvasId);
+    if (context === null) {
+      return;
+    }
+
+    const drawWaveStripFrame = initializeDrawWaveStripFrame(context);
+
+    function animateWaveStrip() {
+      drawWaveStripFrame();
+      window.requestAnimationFrame(animateWaveStrip);
+    }
+    animateWaveStrip();
+  }
+
+  drawAnimatedWaveStrip("wave-strip");
+</script>
