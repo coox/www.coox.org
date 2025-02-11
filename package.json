@@ -55,7 +55,7 @@
     "prettier-plugin-nunjucks": "github:justrhysism/prettier-plugin-nunjucks",
     "purecss": "2.0.5",
     "sass": "1.32.5",
-    "webpack": "4.46.0"
+    "webpack": "5.97.1"
   },
   "browserslist": [
     "defaults"
